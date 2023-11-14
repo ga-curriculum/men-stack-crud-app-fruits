@@ -28,6 +28,7 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 | [Delete a Fruit](./delete-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
 | [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   | -- | -- | tktk skills covered |
 | [Update a Fruit](./update-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
+| [Recap](./recap/README.md)                                                           | -- | -- | tktk skills covered |
 | **Total content**                                                                    | -- | -- |                     |
 
 ## Level Up content
