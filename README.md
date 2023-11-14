@@ -1,8 +1,8 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits](./assets/tktk-hero.png)
 
 ## About
 
-tktk Write a short but descriptive summary of the content in this module.
+This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 
 ## Prerequisites
 
@@ -14,10 +14,21 @@ tktk Write a short but descriptive summary of the content in this module.
 
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
-| [tktk Microlesson Name](./tktk-microlesson-01/README.md) | -- | -- | tktk skills covered |
-| [tktk Microlesson Name](./tktk-microlesson-02/README.md) | -- | -- | tktk skills covered |
-| [tktk Microlesson Name](./tktk-microlesson-03/README.md) | -- | -- | tktk skills covered |
-| **Total content**                                        | -- | -- |                     |
+| [Setup](./setup/README.md)                                                           | -- | -- | tktk skills covered |
+| [Build and Run `server.js`](./build-and-run-serverjs/README.md)                      | -- | -- | tktk skills covered |
+| [Build a Landing Page](./build-a-landing-page/README.md)                             | -- | -- | tktk skills covered |
+| [Use Mongoose to Connect to MongoDB](./use-mongoose-to-connect-to-mongodb/README.md) | -- | -- | tktk skills covered |
+| [Build the Fruit Model](./build-the-fruit-model/README.md)                           | -- | -- | tktk skills covered |
+| [Build the New Fruit Page](./build-the-new-fruit-page/README.md)                     | -- | -- | tktk skills covered |
+| [Create a Fruit](./create-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
+| [View the Created Fruit in Atlas](./view-the-created-fruit-in-atlas/README.md)       | -- | -- | tktk skills covered |
+| [Build the Fruits Index Page](./build-the-fruits-index-page/README.md)               | -- | -- | tktk skills covered |
+| [Improving the User Experience](./improving-the-user-experience/README.md)           | -- | -- | tktk skills covered |
+| [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 | -- | -- | tktk skills covered |
+| [Delete a Fruit](./delete-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
+| [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   | -- | -- | tktk skills covered |
+| [Update a Fruit](./update-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
+| **Total content**                                                                    | -- | -- |                     |
 
 ## Level Up content
 
@@ -32,13 +43,9 @@ tktk Write a short but descriptive summary of the content in this module.
 
 📖 [Reference Materials](./references/README.md)
 
-## Deployed sites
+## Complete code
 
-tktk If there is not a deployed site related to this module this section and all of its content should be removed.
-
-🌐 [Live site](#tktk-deployed-app-url)
-
-🐙 [Repository](#tktk-repository-for-deployed-app)
+🐙 [Repository](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution)
 
 ## Internal resources
 

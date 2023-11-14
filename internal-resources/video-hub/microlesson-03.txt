@@ -1,4 +1,4 @@
-Lecture title: [tktk Module Name]
+Lecture title: Building a CRUD App with Mongoose, Express, and EJS - Fruits
 Subtitle: microlesson-03
 
 chapter-file-name

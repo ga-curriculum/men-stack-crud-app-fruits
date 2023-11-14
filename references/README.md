@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - References](./assets/hero.png)
+# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - References](./assets/hero.png)
 
 ## Lesson references
 
