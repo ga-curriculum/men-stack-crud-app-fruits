@@ -98,8 +98,3 @@ This takes care of the user interface for creating a new fruit! Sadly, it isn't 
 
 [Complete Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-new-fruit-form-complete)
 
-1. Concept - what is the route
-2. Create the UI that is going to hit that route - form, link
-3. Define that route, log everything - req.params, req.body. Test everything.
-4. Build the controller function.
-5. render a new ui or redirect
