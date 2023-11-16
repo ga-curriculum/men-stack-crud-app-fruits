@@ -64,23 +64,42 @@ const dotenv = require('dotenv');
 dotenv.config();
 ```
 
+It's important these two lines of code are at the top of this file - it ensures that the environment variables are available everywhere across your application. This is one of the only times we'll stray from only requiring modules at the top of a file.
+
 Next, we'll need to require `mongoose` in our application so that we can use it to connect to our database:
 
 ```javascript
 // server.js
 
+const dotenv = require('dotenv');
+dotenv.config();
+const express = require('express');
+const app = express();
+/* NEW LINE OF CODE REQUIRING MONGOOSE BELOW */
 const mongoose = require('mongoose');
 ```
 
-Now we can use the `mongoose.connect()` method to connect to our database. We'll pass this method a single argument - the connection string from our `.env` file. This is the environment variable we just made in our `.env` file:
+Now we can use the `mongoose.connect()` method to connect to our database. We'll pass this method a single argument - the connection string from our `.env` file. This is the environment variable we just made in our `.env` file - `MONGODB_URI`. Add a new line that accomplishes this after the require statements:
 
 ```javascript
+// server.js
+
+const dotenv = require('dotenv');
+dotenv.config();
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+
+/* NEW LINE OF CODE CONNECTING TO MONGODB BELOW */
 mongoose.connect(process.env.MONGODB_URI);
 ```
 
-To ease debugging, we'll also add a connection message that will print to our terminal when we've connected to the database:
+To ease debugging, we'll also add a connection message that will print to our terminal when we've connected to the database. Add it below the `mongoose.connect()` method:
 
 ```javascript
+// server.js
+
+/* NEW CODE TO LISTEN FOR THE MONGOOSE 'connected' EVENT */
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });

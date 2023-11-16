@@ -17,13 +17,15 @@ We will always have a single file per Mongoose model where we:
 2. Compile the schema into a model
 3. Export that model
 
-We will always name models and model files singularly. For example, `fruit.js` instead of `fruits.js`.
+We will always name models and model files singularly. For example, `fruit.js` instead of `fruits.js`. This is because a single file will always export just one model.
 
 ## Create the fruits schema
 
 Before we're able to define our model, we must first import the mongoose library into our `fruit.js` file, like so:
 
 ```javascript
+// models/fruit.js
+
 const mongoose = require('mongoose')
 ```
 
@@ -32,6 +34,8 @@ With that out of the way, we can define the schema, which provides a consistent 
 In this case, our fruit model will be pretty simple, with a `name` property of type `String` and an `isReadyToEat` property of type `Boolean`. Here's how we'll define that in our `fruit.js` file:
 
 ```javascript
+// models/fruit.js
+
 const fruitSchema = mongoose.Schema({
     name: String,
     isReadyToEat: Boolean
@@ -43,6 +47,8 @@ const fruitSchema = mongoose.Schema({
 Once we've defined our schema, we can then tell mongoose to create a collection in mongodb and validate that collection's data using the schema. We do this using the `mongoose.model` method:
 
 ```javascript
+// models/fruit.js
+
 const Fruit = mongoose.model('Fruit', fruitSchema);
 ```
 
@@ -55,6 +61,8 @@ Next, we want to export the `Fruit` model we just created, so that the rest of o
 The `Fruit` model is what we will use to perform CRUD on the collection.
 
 ```javascript
+// models/fruit.js
+
 module.exports = Fruit;
 ```
 
@@ -63,13 +71,15 @@ module.exports = Fruit;
 We'll need that model in many of the routes we define in `server.js`, so let's add an import statement to `server.js`. Since we need our application to be connected to our MongoDB instance before connecting our model, this code should be placed directly after the mongoose connection code, like so:
 
 ```javascript
+// server.js
+
 mongoose.connect(process.env.MONGO_URI);
 
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
 })
 
-// NEW LINE OF CODE IMPORTING THE MODEL HERE
+// NEW LINE OF CODE REQUIRING THE MODEL HERE
 const Fruit = require('./models/fruit.js');
 ```
 

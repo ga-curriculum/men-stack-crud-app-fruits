@@ -50,6 +50,8 @@ touch views/index.ejs
 Open that file, and add HTML boilerplate, along with some content inside of the `<body>` tag. Don't forget to also change the title!
 
 ```html
+<!-- views/index.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +69,9 @@ Open that file, and add HTML boilerplate, along with some content inside of the 
 With that built, all we need to do is send it in response to a request on the `/` route of our application. Change the existing `res.send()` method to a `res.render()` of this file we just created:
 
 ```javascript
+// server.js
+
+// GET /
 app.get('/', async (req, res) => {
   res.render('index.ejs');
 });
