@@ -2,4 +2,35 @@
 
 **Learning objective:** By the end of this lesson, students will be able to tktk
 
-tktk Notes: Only create the directory and server.js inside it. No content other than that.
+Open your Terminal application and navigate to your `~/code/ga/lectures` directory:
+
+cd `~/code/ga/lectures`
+
+Make a new directory called `fruits`, then enter this directory:
+
+```bash
+mkdir fruits
+cd fruits
+```
+
+In this directory create a `server.js` file:
+
+```bash
+touch server.js
+```
+
+Create a node project along with its `package.json` file by using this command:
+
+```bash
+npm init
+```
+
+During initialization, you will be prompted to customize your project and the `package.json` file.
+
+At this point, accept the defaults (by simply just hitting `Return`/`Enter` for each prompt without adding any values), except for the entry point - set this to be `server.js`.
+
+Open the project's folder in VS Code:
+
+```bash
+code .
+```

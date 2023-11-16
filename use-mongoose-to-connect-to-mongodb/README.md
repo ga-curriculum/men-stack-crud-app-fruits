@@ -74,9 +74,9 @@ Next, we'll need to require `mongoose` in our application so that we can use it 
 const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
-const app = express();
 /* NEW LINE OF CODE REQUIRING MONGOOSE BELOW */
 const mongoose = require('mongoose');
+
 ```
 
 Now we can use the `mongoose.connect()` method to connect to our database. We'll pass this method a single argument - the connection string from our `.env` file. This is the environment variable we just made in our `.env` file - `MONGODB_URI`. Add a new line that accomplishes this after the require statements:
@@ -87,8 +87,9 @@ Now we can use the `mongoose.connect()` method to connect to our database. We'll
 const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+
+const app = express();
 
 /* NEW LINE OF CODE CONNECTING TO MONGODB BELOW */
 mongoose.connect(process.env.MONGODB_URI);

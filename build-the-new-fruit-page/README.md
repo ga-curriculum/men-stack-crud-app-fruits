@@ -10,7 +10,7 @@ We won't need to use the Fruit model in here. No data is actually going back and
 
 ## Create the route
 
-Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `app.listen` method (remember, all routes MUST be defined above `app.listen`).
+Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `app.listen()` method (remember, all routes MUST be defined above `app.listen()`).
 
 ```javascript
 // server.js
