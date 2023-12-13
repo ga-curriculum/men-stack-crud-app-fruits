@@ -1,6 +1,65 @@
 # ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Update a Fruit](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able to edit a fruit from their rendered form and see the updated fruit on their MongoDB Atlas dashboard.
+
+## Step 1: Conceptualize the route
+We already wrote the route in the action of the form above:
+
+```js
+PUT /fruits/:fruitId
+```
+
+## Step 2: Create the UI that will issue the request to that route
+We already did this, so we can move on to step 3!
+
+## Step 3: Define the route on the server and map it to an exported controller function
+
+Our form has a `PUT` request stubbed up and ready to go, so let's write the route:
+```js
+// localhost:3000/fruits/:fruitId
+router.put("/:fruitId", fruitsCtrl.update)
+```
+
+And export the new controller:
+```js
+function update(req, res) {
+  console.log("Remaking fruits!")
+}
+
+export {
+  index,
+  newFruit as new,
+  create
+  show,
+  deleteFruit as delete,
+  edit,
+  update
+}
+
+```
+
+## Step 4: Code the controller function
+Once we finish the controller function we'll be done!
+
+```js
+function update(req, res) {
+  req.body.isReadyToEat = !!req.body.isReadyToEat
+  for (let key in req.body) {
+    if(req.body[key] === "") delete req.body[key]
+  }
+  Fruit.findByIdAndUpdate(req.params.fruitId, req.body, {new: true})
+  .then(fruit => {
+    res.redirect(`/fruits/${fruit._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
+```
+
+## Step 5: No step 5 here, we're just redirecting!
+We have full CRUD on the fruit model! Fantastic!
 
 tktk Notes: Handle edit fruit form submission. Add method and action to edit fruit form.
 
