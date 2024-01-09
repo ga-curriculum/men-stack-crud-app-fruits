@@ -4,7 +4,9 @@
 
 Open your Terminal application and navigate to your `~/code/ga/lectures` directory:
 
-cd `~/code/ga/lectures`
+```bash
+cd ~/code/ga/lectures
+```
 
 Make a new directory called `fruits`, then enter this directory:
 
