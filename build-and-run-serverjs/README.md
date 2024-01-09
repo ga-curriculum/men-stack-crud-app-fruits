@@ -25,6 +25,7 @@ npm i express
 Now that we've done this, the Express framework is available for us to use when building our application.  Without this step, if we were to try to run our server code, we would receive an error since our app would be be trying to import a node module that we haven't installed yet.
 
 Now that `express` is installed, let's write the basic code needed to create our server.
+
 ## Basic Structure of Express App
 
 Here is a helpful outline of what a typical Express app does - let’s put this guide right in our `server.js`:
