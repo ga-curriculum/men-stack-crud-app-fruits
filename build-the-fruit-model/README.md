@@ -4,20 +4,22 @@
 
 ## Create the model file `fruit.js`
 
-While this application may not have multiple models, it's still a good idea to create a directory called `models` that will store all Mongoose models used in the application. Let's go ahead and create the directory, along with a `fruit.js` file inside of it:
+Let's create a directory that will hold the file for our fruit model (`fruits.js`):
 
 ```bash
 mkdir models
 touch models/fruit.js
 ```
 
-We will always have a single file per Mongoose model where we:
+It might seem silly to have a directory with just a single file in it, but it's a good habit to get into.  Hypothetically, if we were to decide to add more models later on, it would be nice to have a separate file for each model.  At that point, the directory would become more useful, from a structural standpoint.
 
-1. Define the schema
-2. Compile the schema into a model
-3. Export that model
+The `fruit.js` file should:
 
-We will always name models and model files singularly. For example, `fruit.js` instead of `fruits.js`. This is because a single file will always export just one model.
+1. Create the schema, which basically defines the properties of a fruit
+2. Link the schema with a *model*, which is essentially a reference to the collection in MongoDB
+3. Export that model, so your `server.js` file can use it.
+
+You should name models and model files singularly. For example, `fruit.js` instead of `fruits.js`. This is because a single file should be exporting just one model.
 
 ## Create the fruits schema
 
@@ -44,7 +46,7 @@ const fruitSchema = mongoose.Schema({
 
 ## Register the model
 
-Once we've defined our schema, we can then tell mongoose to create a collection in mongodb and validate that collection's data using the schema. We do this using the `mongoose.model` method:
+Once we've defined our schema, we can then tell mongoose to create a collection in MongoDB and validate that collection's data using the schema. We do this using the `mongoose.model` method:
 
 ```javascript
 // models/fruit.js
@@ -52,7 +54,7 @@ Once we've defined our schema, we can then tell mongoose to create a collection 
 const Fruit = mongoose.model('Fruit', fruitSchema);
 ```
 
-It is a standard convention to use a capital letter to start off database models, so be sure your model is named `Fruit` and not `fruit`.
+There is a convention to use a capital letter to start off database models, so name your model `Fruit`, as opposed to `fruit`.
 
 ## Export the model from the fruit.js file
 
@@ -68,7 +70,7 @@ module.exports = Fruit;
 
 ## Import the model into the `server.js` file
 
-We'll need that model in many of the routes we define in `server.js`, so let's add an import statement to `server.js`. Since we need our application to be connected to our MongoDB instance before connecting our model, this code should be placed directly after the mongoose connection code, like so:
+We'll need that model in many of the routes we define in `server.js`, so let's add a require statement to `server.js`. Since we need our application to be connected to our MongoDB instance before connecting our model, this code should be placed directly after the mongoose connection code, like so:
 
 ```javascript
 // server.js
