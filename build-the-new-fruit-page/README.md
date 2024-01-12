@@ -1,16 +1,16 @@
 # ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Build the New Fruit Page](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to build an express route that renders a form to create new data in a database.
+**Learning objective:** By the end of this lesson, students will be able to build an express route that renders a form that will allow users to enter data that will be sent to the server for processing.
 
 ## The NEW Route
 
-The purpose of this route is to provide users with a form they can use to submit data into our database. In keeping with RESTful routes conventions, the url for this route will be: `/fruits/new`.
+The purpose of this route is to provide users with a form they can use to submit data to our server for eventual entry into the database. In keeping with RESTful routes conventions, the url for this route will be: `/fruits/new`.
 
-We won't need to use the Fruit model in here. No data is actually going back and forth in this route. All this route does is provide the form to the user. If we want to create data through our application, this is where we need to start!
+We won't need to use the Fruit model in here. No data is actually be used in this route. All this route does is provide the form to the user. If we want to create data through our application, this is where we need to start!
 
 ## Create the route
 
-Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `app.listen()` method (remember, all routes MUST be defined above `app.listen()`).
+Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `app.listen()` method (remember, all routes should be defined above `app.listen()`).
 
 ```javascript
 // server.js
