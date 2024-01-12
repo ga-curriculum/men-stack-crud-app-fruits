@@ -4,13 +4,11 @@
 
 ## The NEW Route
 
-The purpose of this route is to provide users with a form they can use to submit data to our server for eventual entry into the database. In keeping with RESTful routes conventions, the url for this route will be: `/fruits/new`.
-
-We won't need to use the Fruit model in here. No data is actually be used in this route. All this route does is provide the form to the user. If we want to create data through our application, this is where we need to start!
-
-The important thing to remember is that the act of creating a fruit actually takes *two* separate routes.  The *new* route that we build here handles *just* the act giving the user a form into which the user can enter data.  That form will eventually send its data off to a *completely different* route who's sole purpose to insert that data into the database.
+The act of creating a fruit actually takes *two* separate routes.  The *new* route, that we build in this section, handles *just* the act giving the user a form into which the user can enter data.  That form will then send its data off to a *completely different* route, which we will build in the next section, who's sole purpose is to insert that data into the database.  We could use one route to handle both aspects of creating a fruit, but that route would be overly complex.  Using two different routes is helpful because it keeps our routes simple and easy to understand.
 
 ## Create the route
+
+In keeping with RESTful routes conventions, the url for this route will be: `/fruits/new`.
 
 Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `app.listen()` method (remember, all routes should be defined above `app.listen()`).
 
@@ -69,11 +67,11 @@ app.get('/fruits/new', (req, res)=>{
 })
 ```
 
-We should be able to test it by again visiting `localhost:3000/fruits/new` in our browser, and this time we should see the h1 message on the page.
+We should be able to test it by again visiting `localhost:3000/fruits/new` in our browser, and this time we should see the `<h1>` message on the page.
 
 ## Creating the form
 
-Finally, let's add the actual form element to our template page, with inputs and labels for both of the properties of the Fruit model. While the `name` field can easily be a text input, the boolean `isReadyToEat` field will be slightly more complicated, relying on a checkbox element.
+Finally, let's add the actual form element to our template page, with inputs and labels for both of the properties of the Fruit model. While the `name` field should be a text input, the boolean `isReadyToEat` field is probably best represented as a checkbox element.
 
 ```html
 <!-- views/fruits/new.ejs -->
@@ -94,7 +92,7 @@ Finally, let's add the actual form element to our template page, with inputs and
 </body>
 ```
 
-You'll notice that the form has two attributes `action` and `method`.  These respectively define the URL and HTTP Verb for the request that the browser makes when the user submits the form.  We'll discuss this further in the next section.
+You'll notice that the form has two attributes `action` and `method`.  These respectively define the URL and HTTP method for the request that the browser makes when the user submits the form.  We'll discuss this further in the next section.
 
 This takes care of the user interface for creating a new fruit! Sadly, it isn't really testable yet, since we don't have the route responsible for handling the HTTP request that this form would generate.  We'll handle the submission of this form next!  For now, if you submit the form, the browser will tell you `Cannot POST /fruits`
 
