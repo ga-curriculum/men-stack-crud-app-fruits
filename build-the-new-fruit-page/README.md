@@ -8,6 +8,8 @@ The purpose of this route is to provide users with a form they can use to submit
 
 We won't need to use the Fruit model in here. No data is actually be used in this route. All this route does is provide the form to the user. If we want to create data through our application, this is where we need to start!
 
+The important thing to remember is that the act of creating a fruit actually takes *two* separate routes.  The *new* route that we build here handles *just* the act giving the user a form into which the user can enter data.  That form will eventually send its data off to a *completely different* route who's sole purpose to insert that data into the database.
+
 ## Create the route
 
 Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `app.listen()` method (remember, all routes should be defined above `app.listen()`).
