@@ -21,7 +21,6 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 | [Build the Fruit Model](./build-the-fruit-model/README.md)                           | -- | -- | tktk skills covered |
 | [Build the New Fruit Page](./build-the-new-fruit-page/README.md)                     | -- | -- | tktk skills covered |
 | [Create a Fruit](./create-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
-| [View the Created Fruit in Atlas](./view-the-created-fruit-in-atlas/README.md)       | -- | -- | tktk skills covered |
 | [Build the Fruits Index Page](./build-the-fruits-index-page/README.md)               | -- | -- | tktk skills covered |
 | [Linking Pages within an App](./linking-pages-within-an-app/README.md)               | -- | -- | tktk skills covered |
 | [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 | -- | -- | tktk skills covered |
