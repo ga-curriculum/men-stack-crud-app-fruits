@@ -2,40 +2,13 @@
 
 **Learning objective:** By the end of this lesson, students will be able to build an express route that will find and render all of the fruits that have been created in the database.
 
-## Use a Model to Read Data
-
-The querying ability of Mongoose is very capable. For example, we might use the following query to find movies with very specific parameters from a database:
-
-```js
-const movies = await Movie.find({ mpaaRating: 'PG' })
-  .where('releaseYear').lt(1970)
-  .where('cast').in('Bob Hope')
-  .sort('-title')
-  .limit(3)
-  .select('title releaseYear');
-```
-
-The above query builder syntax is unique to Mongoose and is not available in MongoDB.
-
-Powerful? Yes, but we're going to start with the basics!
-
-## Useful Model methods to query for data
-
-Here are the common Model methods for querying data:
-
-| Method | Purpose | Syntax |
-|---|---|---|
-| `find` | Returns an array of all documents matching the *query object* | `const movies = await Movie.find({mpaaRating: 'PG'})`|
-|`findById` | Find a document based on it's `_id` | `const movie = await Movie.findById(req.params.id)`|
-|`findOne`| Find the first document that matches the *query object* | `const movie = await Movie.findOne({releaseYear: 2000})`|
-
 ## The `index` route
 
 The purpose of this route is to provide users with a list of all fruits that have been created in our database. In keeping with RESTful routing conventions, the `url` for this route will be: `/fruits`.
 
 ## Create the route
 
-Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `/fruits/new` route. This will place our newly created `/fruits` route still above `app.listen()` (remember, all routes MUST be defined above `app.listen()`).
+Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `/fruits/new` route. This will place our newly created `/fruits` route still above `app.listen()` (remember, all routes should be defined above `app.listen()`).
 
 ```js
 // GET /fruits
@@ -50,15 +23,7 @@ Test it out by visiting [localhost:3000/fruits](http://localhost:3000/fruits) di
 
 ## Retrieve the data (fruits)
 
-Now that we know our route is set up, our next step would be to retreive the data we are looking for in the database. In this case, we are looking for all of the fruits.
-
-To do this, we are going to query the database using one of the common methods listed above. In this case, we will use the `.find()` method. When using `.find()`, as stated above, it will return an array of all documents that match the ***query object***.
-
-### What is the ***query object***?
-
-The ***query object*** is just a JavaScript object passed in as the first argument containing properties that will filter out the data we are looking for in a database. For example, if we were looking for all red fruits, the ***query object*** would probably be entered as follows: `{ color: 'red' }`.
-
-Since in our case we are looking for *all* fruits, not just those that are *red*, we won't be including any properties in our ***query object*** so as not to limit the response, so ours will be just an empty object `{}`, hence selecting **ALL** documents. Equivalently, we can also use `.find()` with no arguments and it will still produce the same result.
+Now that we know our route is set up, our next step would be to retrieve the data we are looking for in the database. In this case, we are looking for all of the fruits.  To do this, we will use the `.find()` method. When using `.find()` without supplying any arguments, it will return an array of all documents in the collection.
 
 Let's now use `.find()` inside our `app.get()`:
 
@@ -87,11 +52,11 @@ If we created a single banana document in our database, now when we navigate to 
 
 ## Update the route
 
-Now that we have the data we need our next step is to render that data back to the user. Currently our callback function is responding with `.send()` and the user is seeing this:
+Now that we have the data, we need our next step is to render that data back to the user. Currently our callback function is responding with `.send()` and the user is seeing this:
 
 ![Index Page Test in Browser](./assets/index-test-browser.png)
 
-We are going to want to update this to a `.render()` so that we can create and render a view with full ***dynamic*** HTML back to the user.
+We are going to want to change `.send()` to `.render()` so that we can create and render a view with ***dynamic*** HTML back to the user.  When we refer to ***dynamic*** HTML, we mean HTML that is generated based on data.  As you'll see, the EJS template we're going to create will be populated with the data from the database when we render it as a response to the browser.
 
 We'll be passing in two arguments to `.render()`. The first argument will be a ***string*** for the template we will be rendering (`'fruits/index.ejs'`) and the second argument will be an object with the data we want to pass to that template (`foundFruits`) as a property (key/value pair).
 
@@ -108,7 +73,7 @@ If we navigate to [localhost:3000/fruits](http://localhost:3000/fruits) now, we 
 
 ![Error No View](./assets/error-view.png)
 
-There will be some additional details but this is the main part of the error we need to focus on. It is actually a *good* thing! It tells us what our next step should be, just in case we weren't sure. We're trying to render a view named `index.ejs` in the `views/fruits` directory, *but* one doesn't exist yet. Simple fix, so let's create that view in our next step!
+There will be some additional details, but this is the main part of the error we need to focus on. It is actually a *good* thing! It tells us what our next step should be, just in case we weren't sure. We're trying to render a view named `index.ejs` in the `views/fruits` directory, *but* one doesn't exist yet. Let's create that view in our next step!
 
 ## Create the `index` template
 
@@ -134,17 +99,13 @@ Inside this template file, add the HTML boilerplate, update the `<title>`, and a
 </html>
 ```
 
-Now if we do a refresh on or navigate to [localhost:3000/fruits](http://localhost:3000/fruits) that should solve our error and render the `<h1>`.
+Now if we do a refresh or navigate to [localhost:3000/fruits](http://localhost:3000/fruits) that should solve our error and render the `<h1>`.
 
 ![Index Temporary View](./assets/index-temp-view.png)
 
-Let's finally render all of our fruits. In our last step, we passed that data along as our second argument to the `res.render()` method as the property of an object `{ fruits: foundFruits }`. Therefore, our list of fruits should be the value in the key of `fruits`.
+Let's finally render all of our fruits. In our last step, we passed an object as the second argument to `res.render()`.  When we do this, the keys of the object become variables in our EJS file and the values of the object become the values of the corresponding variables in the EJS file.  We passed the object `{ fruits: foundFruits }` into `res.render()`, so that means in the EJS file, we'll have access to a variable called `fruits` whose value is the `foundFruits` array coming from our database.
 
-Because that object was passed in `res.render()`, our view now has a variable called `fruits` available which hold the value of the array of all fruits. To render each fruit, we will have to iterate over that `fruits` array in our `EJS`.
-
-Because we are going to render elements in an array, a good option would be to use an unordered list `<ul>`. We'll use the `.forEach()` method to iterate over the elements in the array and then for each **fruit** we will render its name in an `<li>`.
-
-Using the elements and method above, let's plug the following code into the body of our HTML:
+To render each fruit, we will have to iterate over that `fruits` array in our EJS file.  Because we are going to render elements in an array, a good option would be to use an unordered list `<ul>`. We'll use the `.forEach()` method to iterate over the elements in the array and then render each object's `name` in an `<li>`.  Add the following code into the body of our HTML:
 
 ```html
 <body>
@@ -158,7 +119,7 @@ Using the elements and method above, let's plug the following code into the body
 </body>
 ```
 
-Another refresh on or navigation to [localhost:3000/fruits](http://localhost:3000/fruits) and we should see our list!
+Another refresh or navigation to [localhost:3000/fruits](http://localhost:3000/fruits) and we should see our list!
 
 ![Fruits List](./assets/fruits-list.png)
 
