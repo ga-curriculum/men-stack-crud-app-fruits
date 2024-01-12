@@ -80,7 +80,7 @@ Finally, let's add the actual form element to our template page, with inputs and
 
 <body>
   <h1>Create a New Fruit!</h1>
-  <form>
+  <form action="/fruits" method="POST">
     <label> 
       Name:
       <input type="text" name="name">
@@ -94,7 +94,9 @@ Finally, let's add the actual form element to our template page, with inputs and
 </body>
 ```
 
-This takes care of the user interface for creating a new fruit! Sadly, it isn't testable yet, since we don't have the route responsible for handling the HTTP request that this form would generate, let's handle the submission of this form next!
+You'll notice that the form has two attributes `action` and `method`.  These respectively define the URL and HTTP Verb for the request that the browser makes when the user submits the form.  We'll discuss this further in the next section.
+
+This takes care of the user interface for creating a new fruit! Sadly, it isn't really testable yet, since we don't have the route responsible for handling the HTTP request that this form would generate.  We'll handle the submission of this form next!  For now, if you submit the form, the browser will tell you `Cannot POST /fruits`
 
 [Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-new-fruit-form-start)
 
