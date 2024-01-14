@@ -12,17 +12,9 @@ So, the final route we will be using is `/fruits/:fruitId`.
 
 ## Create the UI
 
-Now that we know the route we will be using, we can create the UI which will allow the user to navigate to our individual fruits. A great place to utilize is the app's `index` page, as it will already display a list of **ALL** of our fruits from the database already.
+Now that we know the route we will be using, we can create the UI which will allow the user to navigate to our individual fruits. A great place to utilize this is the app's `index` page, as it will already display a list of **ALL** of our fruits from the database already.
 
 We will just need to refactor the code to make each of those fruits listed on the `index` page clickable.
-
-<details>
-    <summary>❓ Any ideas?</summary>
-
-    We can use and <a> tag!
-
-</details>
-<br>
 
 Let's review what we already have in the `<body>` of our `views/fruits/index.ejs` file:
 
@@ -32,7 +24,7 @@ Analyzing what we have here, we are iterating over an array of fruit elements an
 
 Since the `.forEach()` is already creating each of the individual `<li>`s, we can turn them into links by enclosing their content within `<a>` tags.
 
-So not the whole `<li>`, we can just enclose the `<%= fruit.name %>` within the `<a>` tag, like this:
+**NOTE:** we don't want to enclose the whole `<li>` in an `<a>`.  We can just enclose the `<%= fruit.name %>` within the `<a>` tag, like this:
 
 ```html
 <a><%= fruit.name %></a>
@@ -46,11 +38,13 @@ Or to make it even more readable:
 </a>
 ```
 
-Now, we have the content, but what about the value of the `href`?
+It wouldn't be awful if the `<a>` tag enclosed the `<li>`, but it's not great.  What if we wanted to add content to the `<li>` later on that we didn't want to be clickable?  If the `<li>` was inside an `<a>` everything would be clickable, and we wouldn't be able to do that.
+
+Now we have the content, but what about the value of the `href`?
 
 Well, we know from our first step above that our route is going to be `/fruits/:fruitId`. So how do we access the `id` of each specific fruit? Because if I want to see the banana we created, we will need to go to `/fruits/<the id of the banana>`.
 
-We already have access to each `id`. As we iterate through the fruit objects and render them, we already access their names using `fruit.name` so we can just do the same for its `id`. Looking back at the element when we logged it to the console, we saw:
+We already have access to each `id`. As we iterate through the fruit objects and render them, we already access their names using `fruit.name`, so we can just do the same for its `id`. Looking back at the element when we logged it to the console, we saw:
 
 ![Data Array](./assets/data-array.png)
 
@@ -74,7 +68,7 @@ Uh-oh! Error!
 
 That's no big deal for us at this point. We should know that this error tells us that this particular route does not exist. Makes sense, we haven't created it yet. Let's do that next...
 
-## Create the route
+## Create the `show` route
 
 Let's define the route and test it as soon as possible.
 
@@ -116,7 +110,7 @@ Nor does `/fruits/new` match `/fruits`.
 
 Next...
 
-Oh, `/fruits/new` actually does match `/fruits/:fruitId`. When there is a parameter in the route expecting a value, it doesn't care what its type is. If you remember, all url parameters receive the value as a string. Because there is a value in the path (`new`) following the `/fruits`, the parameter `:fruitId` takes on the value of `new`.
+Oh, `/fruits/new` actually does match `/fruits/:fruitId`. When there is a parameter in the route expecting a value, it doesn't care what its type is. If you remember, all url parameters receive the value as a string. Because there is a value in the path (`new`) following `/fruits/`, the parameter `:fruitId` takes on the value of `new`.
 
 The proof of this is in the browser itself. Remember what we're `res.send()`ing to the browser is:
 
@@ -124,7 +118,7 @@ The proof of this is in the browser itself. Remember what we're `res.send()`ing 
 res.send(`This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`);
 ```
 
-The value of `req.params.fruitId` = `'new'` as we see it rendered in the browser.
+The value of `req.params.fruitId` is `'new'` as we can see in the browser:
 
 ![Wrong ID Link](./assets/wrong-id-link.png)
 
@@ -146,7 +140,7 @@ Now check the link to an individual fruit. Woohoo! There's the `_id` which match
 
 ## Retrieve the data (individual fruit)
 
-Now that we know our route is set up, our next step would be to retreive the data we are looking for in the database. In this case, we are looking for a specific fruit using its `_id`.
+Now that we know our route is set up, our next step would be to retrieve the data we are looking for in the database. In this case, we are looking for a specific fruit using its `_id`.
 
 To do this, we are going to query the database using a different method than the one we used to find all fruits. In this case, we will use the `.findById()` method passing in the `_id` as its argument. When using `.findById()` it will return a document based on it's `_id`.
 
@@ -171,17 +165,17 @@ app.get('/fruits/:fruitId', async (req, res) => {
 })
 ```
 
-If we created a single banana document in our database, now when we click on the link to that fruit the return value logged to the console should be that document:
+If we created a single banana document in our database, when we click on the link to that fruit in the index page, the return value logged to the console should be that document:
 
 ![Fruit Document](./assets/fruit-document.png)
 
 ## Update the route
 
-Now that we have the data we need our next step is to render that data back to the user. Currently our callback function is responding with `.send()`.
+Now that we have the data we need, our next step is to render that data back to the user. Currently our callback function is responding with `res.send()`.
 
-We are going to want to update this to a `.render()` so that we can create and render a view with full ***dynamic*** HTML back to the user.
+We are going to want to update this to a `res.render()` so that we can create and render a view with ***dynamic*** HTML back to the user.
 
-We'll be passing in two arguments to `.render()`. The first argument will be a ***string*** for the template we will be rendering (`'fruits/show.ejs'`) and the second argument will be an object with the data we want to pass to that template (`foundFruit`) as a property (key/value pair).
+We'll be passing in two arguments to `res.render()`. The first argument will be a ***string*** for the template we will be rendering (`'fruits/show.ejs'`) and the second argument will be an object with the data we want to pass to that template (`foundFruit`) as a property (key/value pair).
 
 We can also remove the `console.log(foundFruit)` since we already know we have the data we want:
 
@@ -196,11 +190,11 @@ If we click on the link to that fruit now, we won't be seeing that fruit. We'll 
 
 ![Error No View](./assets/error-view.png)
 
-Again, there will be some additional details but this is the main part of the error we need to focus on. Remember, it is actually a *good* thing! It tells us what our next step should be, just in case we forgot. We're trying to render a view named `show.ejs` in the `views/fruits` directory, *but* one doesn't exist yet. Simple fix, so let's create that view in our next step!
+Again, there will be some additional details but this is the main part of the error we need to focus on. Remember, it is actually a *good* thing! It tells us what our next step should be, just in case we forgot. We're trying to render a view named `show.ejs` in the `views/fruits` directory, *but* one doesn't exist yet. Let's create that view in our next step!
 
 ## Create the `show` template
 
-Now that the route is set up, let's create the template we want this route to render for the user with our individual fruit we clicked. We will be putting the `show` template inside the `fruits` sub-folder within the `views` directory we already created:
+Now that the route is set up, let's create the template we want this route to render. We will be putting the `show` template inside the `fruits` sub-folder within the `views` directory we already created:
 
 ```bash
 touch views/fruits/show.ejs
@@ -222,11 +216,11 @@ Inside this template file, add the HTML boilerplate, update the `<title>`, and a
 </html>
 ```
 
-Now if we do a refresh or click on a specific fruit on our `index` page that should solve our error and render the `<h1>`.
+Now, if we do a refresh or click on a specific fruit on our `index` page, that should solve our error and render the `<h1>`.
 
 ![Generic Fruit Show Page](./assets/generic-fruit-show.png)
 
-This is an exceptionally generic show page for a specific fruit. Because we have the fruit's data available to us in the variable `fruit` passed as the second argument from `res.render()`, let's make some immediate changes to the existing HTML:
+This is an exceptionally generic show page for a specific fruit. Remember how the 2nd parameter that we passed `res.render` was `{ fruit: foundFruit }`?  Well, that means that our EJS file will have a variable named `fruit` whose value will be the `foundFruit` variable in our route.  *That* `foundFruit` variable is the data that came back MongoDB regarding the individual fruit we were searching for.  The result of all this is that we can now access properties of the specific fruit in our EJS file like so:
 
 ```html
 <!DOCTYPE html>
@@ -242,7 +236,7 @@ This is an exceptionally generic show page for a specific fruit. Because we have
 </html>
 ```
 
-Another refresh or click on a specific fruit on our `index` page and our `show` page should be more specific:
+Refresh or click on a specific fruit on our `index` page, and our `show` page should be more specific:
 
 ![Specific Fruit Show Page](./assets/specific-fruit-show.png)
 
@@ -250,7 +244,7 @@ Now I know what fruit details I should be seeing, but I don't see the actual det
 
 Let's take care of that step next.
 
-Using some control flow based on the value of `fruit.isReadyToEat` we can decide what we should be rendering. Adding this `if/else` statement after the `<h1>` should do the job:
+Using some control flow based on the value of `fruit.isReadyToEat`, we can decide what we should be rendering. Adding this `if/else` statement after the `<h1>` should do the job:
 
 ```html
 <body>
@@ -263,11 +257,11 @@ Using some control flow based on the value of `fruit.isReadyToEat` we can decide
 </body>
 ```
 
-Another refresh or click on a specific fruit on our `index` page and our `show` page should now show the details of that fruit (can we eat it or not!).
+Refresh or click on a specific fruit on our `index` page, and our `show` page should now show the details of that fruit (can we eat it or not!).
 
 > ❗️ If you've only been working with a single fruit in your database up until this point, be sure to add more and test each link on the `index` page.
 
-Before moving on, let's keep up with our great UX we started last lesson...
+Before moving on, let's keep up with the great UX we started last lesson...
 
 ## Link `show` page back to fruits `index` page
 
@@ -275,7 +269,7 @@ Now that we've managed to navigate to a specific fruit, let's say we want to loo
 
 ### 💪 YOU DO:
 
-For this link, let's copy the styling we used on our `new` page with the form to add a new fruit. Because this is more of a `back` *'button'* so to speak, we don't really want it in our usual nav bar location at the top. Like we did on the `new` page, place the link at the bottom of the `<body>`, right after the `if/else`.
+For this link, let's copy the approach we used on our `new` page. Because this is more of a `back` *'button'* so to speak, we don't really want it in our usual nav bar location at the top. Like we did on the `new` page, place the link at the bottom of the `<body>`, right after the `if/else`.
 
 Once again, add the correct `href` to the opening tag and some content (`'Back to Fruits Index'` perhaps) and you should have no problem reproducing the following:
 
