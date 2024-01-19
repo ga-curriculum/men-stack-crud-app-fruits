@@ -46,6 +46,7 @@
   font-size: 1.4em;
   width: 10em;
   padding: 5px 15px;
+  margin: 15px;
   border-radius: 25px;
   text-align: center;
   box-shadow: 0 5px #ffbd59;
