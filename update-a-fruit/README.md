@@ -1,67 +1,43 @@
 # ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Update a Fruit](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to edit a fruit from their rendered form and see the updated fruit on their MongoDB Atlas dashboard.
+**Learning objective:** By the end of this lesson, students will be to create a route for updating a fruit in MongoDB.
 
 ## Step 1: Conceptualize the route
-We already wrote the route in the action of the form above:
+
+Reviewing the RESTful routes, we know that the route responsible for updating a fruit should be:
 
 ```js
 PUT /fruits/:fruitId
 ```
 
-## Step 2: Create the UI that will issue the request to that route
-We already did this, so we can move on to step 3!
+## Step 2: Define the route on `server.js`
 
-## Step 3: Define the route on the server and map it to an exported controller function
+Our form in the `Edit` page makes a `PUT` request to `/fruits/:fruitId`, so let's write the route that will handle that request:
 
-Our form has a `PUT` request stubbed up and ready to go, so let's write the route:
 ```js
 // localhost:3000/fruits/:fruitId
-router.put("/:fruitId", fruitsCtrl.update)
-```
-
-And export the new controller:
-```js
-function update(req, res) {
-  console.log("Remaking fruits!")
-}
-
-export {
-  index,
-  newFruit as new,
-  create
-  show,
-  deleteFruit as delete,
-  edit,
-  update
-}
-
-```
-
-## Step 4: Code the controller function
-Once we finish the controller function we'll be done!
-
-```js
-function update(req, res) {
-  req.body.isReadyToEat = !!req.body.isReadyToEat
-  for (let key in req.body) {
-    if(req.body[key] === "") delete req.body[key]
+app.put('/fruits/:fruitId', async (req, res) => {
+  if (req.body.isReadyToEat === 'on') {
+    req.body.isReadyToEat = true;
+  } else {
+    req.body.isReadyToEat = false;
   }
-  Fruit.findByIdAndUpdate(req.params.fruitId, req.body, {new: true})
-  .then(fruit => {
-    res.redirect(`/fruits/${fruit._id}`)
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect("/")
-  })
-}
+  await Fruit.findByIdAndUpdate(req.params.fruitId, req.body);
+  res.redirect(`/fruits/${req.params.fruitId}`);
+});
 ```
 
-## Step 5: No step 5 here, we're just redirecting!
-We have full CRUD on the fruit model! Fantastic!
+This route is fairly similar to the `Create` route that handles creating a new fruit in MongoDB.  Here's what's important to note:
 
-tktk Notes: Handle edit fruit form submission. Add method and action to edit fruit form.
+- `app.put` sets this route up to listen for `PUT` requests.  This is the only route that handles `PUT` requests, so it can't conflict with any of the other routes in the same way that the `new` route could conflict with the `show` route.  You can put it anywhere, as long as it comes after any middleware and before `app.listen`.
+- The `_id` of the fruit to update is passed in via the path of the request (`/fruits/:fruitId`), so we can use `req.params.fruitId` when invoking `Fruit.findByIdAndUpdate()` to target that specific fruit
+- Just like in the `Create` route, the value of `req.body.isReadyToEat` will initially either be set to the string `"on"` if the checkbox on the `Edit` form was checked or it will be `undefined` if it was not checked.  This is in conflict with our Mongoose schema, so we'll use a basic `if/else` to change `req.body.isReadyToEat` to a boolean value, just like we did in the `Create` route.
+- As with all of our previous database work, `Fruit.findByIdAndUpdate()` takes a while in computer time, so let's `await` it.  Mark the route's callback function as `async` to get this to work properly.
+- We'll use ``res.redirect(`/fruits/${req.params.fruitId}`);`` to send the user back to the fruit's `Show` page.  We could send them pretty much wherever we want, but this seems like a good User Experience.
+
+## You did it!
+
+We're done with the app!  We have full CRUD and all seven RESTful routes on the fruit model!  Well done!
 
 [tktk Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/update-the-fruit-start)
 

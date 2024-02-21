@@ -6,13 +6,13 @@
 
 Up until this point in our application whenever we want to navigate to a different page, we've had to type the correct path in the address bar.
 
-This makes for a very poor user experience. How do they even know what pages we've created and are available to them?
+This makes for a very poor user experience. How does the user even know what pages we've created and are available to them?
 
-We can make this an easy fix by add links (`<a>`) to our existing valid routes.
+We can fix this easily by adding links (`<a>`) to our existing valid routes.
 
 ## Link landing page to `index` page
 
-Let's start with our **landing page** located at the root route (`'/'`). You can also get there quickly by clicking [localhost:3000](http://localhost:3000). See how easy link make everything!
+Let's start with our **landing page** located at the root route (`'/'`). You can also get there quickly by clicking [localhost:3000](http://localhost:3000). See how easy links make everything!
 
 We should see the following:
 
@@ -22,11 +22,10 @@ Now let's take a look at our HTML in `views/index.ejs`:
 
 ![views/index.ejs Without Link](./assets/index-ejs-without-link.png)
 
-Inside the body, at the very top, above the `<h1>`, let's add an `<a>` tag. We'll need to add two things to our new `<a>` tag.
+Inside the body, at the very top, above the `<h1>`, let's add an `<a>` tag. We'll also need to add the following to the new `<a>` tag:
 
-The first is the `href` value. To get to the `index` page, we'll need to enter its route as the value to the `href`, which is `/fruits`.
-
-The second thing we'll need to add is some content between the opening and closing tags so that users will have something visible to click, say `'Fruits Index`.
+- The `href` value. To get to the `index` page, we'll need to enter its route as the value of the `href`, which is `/fruits`.
+- Some content between the opening and closing tags so that users will have something visible to click, say `'Fruits Index`.
 
 That will give us the following line to enter into our HTML:
 
@@ -34,7 +33,7 @@ That will give us the following line to enter into our HTML:
 <a href="/fruits">Fruits Index</a>
 ```
 
-After adding, your the body of our HTML in `views/index.ejs` should look like this:
+After adding the code above, the body of our HTML in `views/index.ejs` should look like this:
 
 ![views/index.ejs With Link](./assets/index-ejs-with-link.png)
 
@@ -46,7 +45,7 @@ Tada! Now test it out! It should take you to our `index` page. Great work! Now l
 
 ## Link `index` page to `new` page with new fruits form
 
-Let's follow the same steps as above to add a link onto our `index` page of fruits to take us to our form where we can add more fruits.
+Let's follow the same steps as above to add a link in the `index` page that will take us to our `new` page.
 
 Here is our `index` page currently:
 
@@ -56,7 +55,7 @@ And our HTML in `views/fruits/index.ejs`:
 
 ![fruits/index.ejs Without Link](./assets/fruits-index-ejs-without-link.png)
 
-We will add the new `<a>` tag to the top of the `<body>` just as we did above. Don't forget to add the correct `href` to the opening tag and also content (`'Create a Fruit'` sounds pretty good).
+We will add a new `<a>` tag to the top of the `<body>` just as we did above. Don't forget to add the correct `href` to the opening tag and also content (`'Create a Fruit'` sounds pretty good).
 
 After adding the new link, the `<body>` should now look like this:
 
@@ -66,11 +65,11 @@ Taking a look at the fruits `index` page now, we should see that same type of **
 
 ![Index Page With Link](./assets/fruits-index-page-with-link.png)
 
-You know what to do next, test it out! Two down!
+You know what to do next: test it out! Two down!
 
 ## Link `new` page with form back to fruits `index` page
 
-Now that we've managed to navigate to our form to create a new fruit, let's say we've changed our minds. Or we want to check the list again before adding a new fruit. Whatever the reason, let's say we need to navigate back to the `index` page.
+Now that the user has navigated to our form to create a new fruit, let's say they've changed their minds. Or they want to check the list again before adding a new fruit. Whatever the reason, let's say they need to navigate back to the `index` page.
 
 ### 💪 YOU DO:
 
