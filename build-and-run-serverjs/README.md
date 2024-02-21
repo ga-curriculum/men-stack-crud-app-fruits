@@ -1,18 +1,8 @@
 # ![MEN Stack CRUD App - Fruits - Build and Run server.js](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able to create a basic Express server and run it in their terminal.
 
-tktk Notes: Get an app to an error free start with minimal config. npm init and npm i express.
-
-[tktk Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-and-run-serverjs-start)
-
-[tktk Complete Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-and-run-serverjs-complete)
-
-# ![[Introduction to Express] - Build and Run 'server.js'](./assets/hero.png)
-
-**Learning objective:** By the end of this lesson, students will be able to build the most basic structure of an **Express** server and know how to start it.
-
-### Install the Express Module
+## Install the Express Module
 
 Before we begin building our server, let's use `npm` to install the Express module in this project:
 
@@ -28,7 +18,7 @@ Now that `express` is installed, let's write the basic code needed to create our
 
 ## Basic Structure of Express App
 
-Here is a helpful outline of what a typical Express app does - let’s put this guide right in our `server.js`:
+Here is a helpful outline of what a typical Express app does - let’s put this code right in our `server.js` file:
 
 ```js
 // Here is where we import modules
@@ -52,6 +42,4 @@ Let's test our work by running our server. Run the following in your terminal:
 nodemon
 ```
 
-Our server should be up and running and you should see something like this:
-
-![Server Running](./assets/server-running.png)
+Our server should be up and running and you should see *`Listening on port 3000`* logged to your terminal.
