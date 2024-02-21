@@ -34,9 +34,7 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 
 | Lesson                                                              | Video Time | Video | Skills              |
 | ------------------------------------------------------------------- | :--------: | :---: | ------------------- |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-01.md) |     --     |  --   | tktk skills covered |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-02.md) |     --     |  --   | tktk skills covered |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-03.md) |     --     |  --   | tktk skills covered |
+| [Style the Application](./style-the-application/README.md)          |     --     |  --   | Bring your app to life with CSS |
 | **Total Level Up content**                                          |     --     |  --   |                     |
 
 ## References
