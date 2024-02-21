@@ -121,7 +121,7 @@ app.listen(3000, () => {
 
 Now we can use the `mongoose.connect()` method to connect to our database. We'll pass this method a single argument - the connection string from our `.env` file. This is the environment variable we just added in our `.env` file - `MONGODB_URI`. 
 
-Add a the following line after your require statements:
+Add the following line after your require statements:
 
 ```javascript
 // server.js
