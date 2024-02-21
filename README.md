@@ -15,8 +15,8 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 | Lesson                                                                               | Video Time | Video | Skills                                 |
 | ------------------------------------------------------------------------------------ | :--------: | :---: | -------------------------------------- |
 | [Setup](./setup/README.md)                                                           |     --     |  --   | Setting up the development environment |
-| [Build and Run `server.js`](./build-and-run-serverjs/README.md)                      |     --     |  --   | tktk skills covered                    |
-| [Build a Landing Page](./build-a-landing-page/README.md)                             |     --     |  --   | tktk skills covered                    |
+| [Build and Run `server.js`](./build-and-run-serverjs/README.md)                      |     --     |  --   | Create a basic Express server          |
+| [Build a Landing Page](./build-a-landing-page/README.md)                             |     --     |  --   | Implement a landing page using Express and EJS  |
 | [Use Mongoose to Connect to MongoDB](./use-mongoose-to-connect-to-mongodb/README.md) |     --     |  --   | tktk skills covered                    |
 | [Build the Fruit Model](./build-the-fruit-model/README.md)                           |     --     |  --   | tktk skills covered                    |
 | [Build the New Fruit Page](./build-the-new-fruit-page/README.md)                     |     --     |  --   | tktk skills covered                    |
