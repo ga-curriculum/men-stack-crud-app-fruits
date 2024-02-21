@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Improving the User Experience](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Improving the User Experience](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to make minor refactors to the app by adding links to connect existing pages using valid routes, thereby improving the app's UX.
 
@@ -37,7 +37,7 @@ After adding the code above, the body of our HTML in `views/index.ejs` should lo
 
 ![views/index.ejs With Link](./assets/index-ejs-with-link.png)
 
-Now if we take a look in the browser, we should see a ***VERY*** simple nav bar.
+Now if we take a look in the browser, we should see a **_VERY_** simple nav bar.
 
 ![Landing Page With Link](./assets/landing-page-with-link.png)
 
@@ -73,7 +73,7 @@ Now that the user has navigated to our form to create a new fruit, let's say the
 
 ### 💪 YOU DO:
 
-For this link, we'll change up its placement. Because this is more of a `back` *'button'* so to speak, we don't really want it in our usual nav bar location at the top. This time we will place the link at the bottom of the `<body>`, right after the `<form>`.
+For this link, we'll change up its placement. Because this is more of a `back` _'button'_ so to speak, we don't really want it in our usual nav bar location at the top. This time we will place the link at the bottom of the `<body>`, right after the `<form>`.
 
 Once again, add the correct `href` to the opening tag and some content (`'Back to Fruits Index'` perhaps) and you should have no problem reproducing the following:
 
@@ -85,7 +85,7 @@ Don't forget to test it!
 
 ### Whoops! Spoke too soon...
 
-## Refactor the ***`create`*** Action's Redirect
+## Refactor the **_`create`_** Action's Redirect
 
 One more thing we can do to make our app even more user friendly is to update `res.redirect()` after creating a new fruit in our `app.post('/fruits')` callback function.
 

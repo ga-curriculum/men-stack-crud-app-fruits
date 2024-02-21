@@ -1,10 +1,10 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Build a Landing Page](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Build a Landing Page](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to build an Express route that renders a landing page for an application.
 
 ## The Landing Page
 
-No matter what an application does, nearly every web application has a default landing "home" page for the app. This is the page that users will first visit when typing "webapp.com" into their browser, and it will provide navigation to the other parts of the app. 
+No matter what an application does, nearly every web application has a default landing "home" page for the app. This is the page that users will first visit when typing "webapp.com" into their browser, and it will provide navigation to the other parts of the app.
 
 ## Install `ejs` from NPM
 
@@ -24,8 +24,8 @@ We'll need to start with a route in our `server.js` file. We'll set it up to sen
 // server.js
 
 // GET /
-app.get('/', async (req, res) => {
-  res.send('hello, friend!');
+app.get("/", async (req, res) => {
+  res.send("hello, friend!");
 });
 ```
 
@@ -54,15 +54,15 @@ Open that file and add HTML boilerplate along with some content inside of the `<
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fruits App</title>
-</head>
-<body>
-  <h1>Welcome to the Fruits app!</h1>
-  <p>An app for collecting your favorite fruits.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fruits App</title>
+  </head>
+  <body>
+    <h1>Welcome to the Fruits app!</h1>
+    <p>An app for collecting your favorite fruits.</p>
+  </body>
 </html>
 ```
 
@@ -72,14 +72,12 @@ With that built, all we need to do is send the HTML in response to a request for
 // server.js
 
 // GET /
-app.get('/', async (req, res) => {
-  res.render('index.ejs');
+app.get("/", async (req, res) => {
+  res.render("index.ejs");
 });
 ```
 
 Browse to `localhost:3000` and see the result!
-
-
 
 [Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/landing-page-start)
 

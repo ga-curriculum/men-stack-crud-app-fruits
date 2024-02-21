@@ -1,10 +1,10 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Build the New Fruit Page](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Build the New Fruit Page](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to build an express route that renders a form that will allow users to enter data that will be sent to the server for processing.
 
 ## The NEW Route
 
-The act of creating a fruit actually takes *two* separate routes.  The *new* route, that we build in this section, handles *just* the act giving the user a form into which the user can enter data.  That form will then send its data off to a *completely different* route, which we will build in the next section, who's sole purpose is to insert that data into the database.  We could use one route to handle both aspects of creating a fruit, but that route would be overly complex.  Using two different routes is helpful because it keeps our routes simple and easy to understand.
+The act of creating a fruit actually takes _two_ separate routes. The _new_ route, that we build in this section, handles _just_ the act giving the user a form into which the user can enter data. That form will then send its data off to a _completely different_ route, which we will build in the next section, who's sole purpose is to insert that data into the database. We could use one route to handle both aspects of creating a fruit, but that route would be overly complex. Using two different routes is helpful because it keeps our routes simple and easy to understand.
 
 ## Create the route
 
@@ -16,9 +16,9 @@ Let's start by defining the route and testing it as soon as possible. Add the fo
 // server.js
 
 // GET /fruits/new
-app.get('/fruits/new', (req, res)=>{
-  res.send('This route sends the user a form page!');
-})
+app.get("/fruits/new", (req, res) => {
+  res.send("This route sends the user a form page!");
+});
 ```
 
 Test it by visiting `localhost:3000/fruits/new` in your browser's address bar.
@@ -41,18 +41,18 @@ Inside this template file, add the HTML boilerplate and an `<h1>` to get started
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create a Fruit</title>
-</head>
-<body>
-  <h1>Create a New Fruit!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a Fruit</title>
+  </head>
+  <body>
+    <h1>Create a New Fruit!</h1>
+  </body>
 </html>
 ```
 
-Our goal throughout this project will be to test pieces of this application as soon as possible, so while it's tempting to go right on ahead and create the form users will need, let's update the route first so we can test it. 
+Our goal throughout this project will be to test pieces of this application as soon as possible, so while it's tempting to go right on ahead and create the form users will need, let's update the route first so we can test it.
 
 ## Updating the new route
 
@@ -62,9 +62,9 @@ Instead of `res.send`, we'll want to render the `new.ejs` template found in the 
 // server.js
 
 // GET /fruits/new
-app.get('/fruits/new', (req, res)=>{
-  res.render('/fruits/new.ejs');
-})
+app.get("/fruits/new", (req, res) => {
+  res.render("/fruits/new.ejs");
+});
 ```
 
 We should be able to test it by again visiting `localhost:3000/fruits/new` in our browser, and this time we should see the `<h1>` message on the page.
@@ -79,24 +79,23 @@ Finally, let's add the actual form element to our template page, with inputs and
 <body>
   <h1>Create a New Fruit!</h1>
   <form action="/fruits" method="POST">
-    <label> 
+    <label>
       Name:
-      <input type="text" name="name">
+      <input type="text" name="name" />
     </label>
     <label>
       Ready to Eat?
-      <input type="checkbox" name="isReadyToEat">
+      <input type="checkbox" name="isReadyToEat" />
     </label>
     <button type="submit">Add fruit</button>
   </form>
 </body>
 ```
 
-You'll notice that the form has two attributes `action` and `method`.  These respectively define the URL and HTTP method for the request that the browser makes when the user submits the form.  We'll discuss this further in the next section.
+You'll notice that the form has two attributes `action` and `method`. These respectively define the URL and HTTP method for the request that the browser makes when the user submits the form. We'll discuss this further in the next section.
 
-This takes care of the user interface for creating a new fruit! Sadly, it isn't really testable yet, since we don't have the route responsible for handling the HTTP request that this form would generate.  We'll handle the submission of this form next!  For now, if you submit the form, the browser will tell you `Cannot POST /fruits`
+This takes care of the user interface for creating a new fruit! Sadly, it isn't really testable yet, since we don't have the route responsible for handling the HTTP request that this form would generate. We'll handle the submission of this form next! For now, if you submit the form, the browser will tell you `Cannot POST /fruits`
 
 [Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-new-fruit-form-start)
 
 [Complete Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-new-fruit-form-complete)
-

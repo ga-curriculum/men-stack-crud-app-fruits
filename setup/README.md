@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - tktk Microlesson Name](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - tktk Microlesson Name](./assets/hero.png)
 
 Open your Terminal application and navigate to your `~/code/ga/lectures` directory:
 
@@ -6,7 +6,7 @@ Open your Terminal application and navigate to your `~/code/ga/lectures` directo
 cd ~/code/ga/lectures
 ```
 
-Make a new directory called `fruits`, then enter this directory:
+Make a new directory called `men-stack-crud-app-fruits`, then enter this directory:
 
 ```bash
 mkdir fruits

@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Build the Fruits Show Page](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Build the Fruits Show Page](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to build an express route that will find and render a single fruit from the database.
 
@@ -24,7 +24,7 @@ Analyzing what we have here, we are iterating over an array of fruit elements an
 
 Since the `.forEach()` is already creating each of the individual `<li>`s, we can turn them into links by enclosing their content within `<a>` tags.
 
-**NOTE:** we don't want to enclose the whole `<li>` in an `<a>`.  We can just enclose the `<%= fruit.name %>` within the `<a>` tag, like this:
+**NOTE:** we don't want to enclose the whole `<li>` in an `<a>`. We can just enclose the `<%= fruit.name %>` within the `<a>` tag, like this:
 
 ```html
 <a><%= fruit.name %></a>
@@ -33,12 +33,10 @@ Since the `.forEach()` is already creating each of the individual `<li>`s, we ca
 Or to make it even more readable:
 
 ```html
-<a>
-    <%= fruit.name %>
-</a>
+<a> <%= fruit.name %> </a>
 ```
 
-It wouldn't be awful if the `<a>` tag enclosed the `<li>`, but it's not great.  What if we wanted to add content to the `<li>` later on that we didn't want to be clickable?  If the `<li>` was inside an `<a>` everything would be clickable, and we wouldn't be able to do that.
+It wouldn't be awful if the `<a>` tag enclosed the `<li>`, but it's not great. What if we wanted to add content to the `<li>` later on that we didn't want to be clickable? If the `<li>` was inside an `<a>` everything would be clickable, and we wouldn't be able to do that.
 
 Now we have the content, but what about the value of the `href`?
 
@@ -51,9 +49,7 @@ We already have access to each `id`. As we iterate through the fruit objects and
 Utilizing `_id` will give us the `id` that we need. Now we can make the adjustment to the `<a>` tag and add the correct `href`.
 
 ```html
-<a href="/fruits/<%= fruit._id %>">
-    <%= fruit.name %>
-</a>
+<a href="/fruits/<%= fruit._id %>"> <%= fruit.name %> </a>
 ```
 
 Once we've updated our HTML, we should see the items showing up as links now:
@@ -77,9 +73,11 @@ Let's define the route and test it as soon as possible.
 We're going to add the following code to `server.js`:
 
 ```js
-app.get('/fruits/:fruitId', (req, res) => {
-    res.send(`This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`);
-})
+app.get("/fruits/:fruitId", (req, res) => {
+  res.send(
+    `This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`
+  );
+});
 ```
 
 As always, this route must be above `app.listen()` (remember, all routes MUST be defined above `app.listen()`).
@@ -115,7 +113,9 @@ Oh, `/fruits/new` actually does match `/fruits/:fruitId`. When there is a parame
 The proof of this is in the browser itself. Remember what we're `res.send()`ing to the browser is:
 
 ```js
-res.send(`This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`);
+res.send(
+  `This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`
+);
 ```
 
 The value of `req.params.fruitId` is `'new'` as we can see in the browser:
@@ -147,22 +147,26 @@ To do this, we are going to query the database using a different method than the
 Let's now use `.findById()` inside our `app.get()`:
 
 ```js
-app.get('/fruits/:fruitId', async (req, res) => {
-    const foundFruit = await Fruit.findById(req.params.fruitId);
-    res.send(`This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`);
-})
+app.get("/fruits/:fruitId", async (req, res) => {
+  const foundFruit = await Fruit.findById(req.params.fruitId);
+  res.send(
+    `This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`
+  );
+});
 ```
 
-Notice also that since we will have to wait for the return value of `.findById()` to be assigned to a variable, we have changed the callback function to an ***async*** function and made use of ***await*** in the variable assignment.
+Notice also that since we will have to wait for the return value of `.findById()` to be assigned to a variable, we have changed the callback function to an **_async_** function and made use of **_await_** in the variable assignment.
 
 To be sure we have the data we are looking for, let's log `foundFruit` to the console:
 
 ```js
-app.get('/fruits/:fruitId', async (req, res) => {
-    const foundFruit = await Fruit.findById(req.params.fruitId);
-    console.log(foundFruit);
-    res.send(`This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`);
-})
+app.get("/fruits/:fruitId", async (req, res) => {
+  const foundFruit = await Fruit.findById(req.params.fruitId);
+  console.log(foundFruit);
+  res.send(
+    `This route sends the user to the show page for the fruit with id: ${req.params.fruitId}!`
+  );
+});
 ```
 
 If we created a single banana document in our database, when we click on the link to that fruit in the index page, the return value logged to the console should be that document:
@@ -173,24 +177,24 @@ If we created a single banana document in our database, when we click on the lin
 
 Now that we have the data we need, our next step is to render that data back to the user. Currently our callback function is responding with `res.send()`.
 
-We are going to want to update this to a `res.render()` so that we can create and render a view with ***dynamic*** HTML back to the user.
+We are going to want to update this to a `res.render()` so that we can create and render a view with **_dynamic_** HTML back to the user.
 
-We'll be passing in two arguments to `res.render()`. The first argument will be a ***string*** for the template we will be rendering (`'fruits/show.ejs'`) and the second argument will be an object with the data we want to pass to that template (`foundFruit`) as a property (key/value pair).
+We'll be passing in two arguments to `res.render()`. The first argument will be a **_string_** for the template we will be rendering (`'fruits/show.ejs'`) and the second argument will be an object with the data we want to pass to that template (`foundFruit`) as a property (key/value pair).
 
 We can also remove the `console.log(foundFruit)` since we already know we have the data we want:
 
 ```js
-app.get('/fruits/:fruitId', async (req, res) => {
-    const foundFruit = await Fruit.findById(req.params.fruitId);
-    res.render('fruits/show.ejs', { fruit: foundFruit });
-})
+app.get("/fruits/:fruitId", async (req, res) => {
+  const foundFruit = await Fruit.findById(req.params.fruitId);
+  res.render("fruits/show.ejs", { fruit: foundFruit });
+});
 ```
 
 If we click on the link to that fruit now, we won't be seeing that fruit. We'll actually be seeing an error again!
 
 ![Error No View](./assets/error-view.png)
 
-Again, there will be some additional details but this is the main part of the error we need to focus on. Remember, it is actually a *good* thing! It tells us what our next step should be, just in case we forgot. We're trying to render a view named `show.ejs` in the `views/fruits` directory, *but* one doesn't exist yet. Let's create that view in our next step!
+Again, there will be some additional details but this is the main part of the error we need to focus on. Remember, it is actually a _good_ thing! It tells us what our next step should be, just in case we forgot. We're trying to render a view named `show.ejs` in the `views/fruits` directory, _but_ one doesn't exist yet. Let's create that view in our next step!
 
 ## Create the `show` template
 
@@ -205,14 +209,14 @@ Inside this template file, add the HTML boilerplate, update the `<title>`, and a
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fruit Show Page</title>
-</head>
-<body>
-  <h1>Here Is Your Chosen Fruit</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fruit Show Page</title>
+  </head>
+  <body>
+    <h1>Here Is Your Chosen Fruit</h1>
+  </body>
 </html>
 ```
 
@@ -220,19 +224,19 @@ Now, if we do a refresh or click on a specific fruit on our `index` page, that s
 
 ![Generic Fruit Show Page](./assets/generic-fruit-show.png)
 
-This is an exceptionally generic show page for a specific fruit. Remember how the 2nd parameter that we passed `res.render` was `{ fruit: foundFruit }`?  Well, that means that our EJS file will have a variable named `fruit` whose value will be the `foundFruit` variable in our route.  *That* `foundFruit` variable is the data that came back MongoDB regarding the individual fruit we were searching for.  The result of all this is that we can now access properties of the specific fruit in our EJS file like so:
+This is an exceptionally generic show page for a specific fruit. Remember how the 2nd parameter that we passed `res.render` was `{ fruit: foundFruit }`? Well, that means that our EJS file will have a variable named `fruit` whose value will be the `foundFruit` variable in our route. _That_ `foundFruit` variable is the data that came back MongoDB regarding the individual fruit we were searching for. The result of all this is that we can now access properties of the specific fruit in our EJS file like so:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= fruit.name %></title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= fruit.name %></title>
+  </head>
+  <body>
     <h1>Here are the details about <%= fruit.name %></h1>
-</body>
+  </body>
 </html>
 ```
 
@@ -248,12 +252,12 @@ Using some control flow based on the value of `fruit.isReadyToEat`, we can decid
 
 ```html
 <body>
-    <h1>Here are the details about <%= fruit.name %></h1>
-    <% if (fruit.isReadyToEat) { %>
-        <p>This fruit is ready to eat!</p>
-    <% } else { %>
-        <p>This fruit is not ready to eat!</p>
-    <% } %>
+  <h1>Here are the details about <%= fruit.name %></h1>
+  <% if (fruit.isReadyToEat) { %>
+  <p>This fruit is ready to eat!</p>
+  <% } else { %>
+  <p>This fruit is not ready to eat!</p>
+  <% } %>
 </body>
 ```
 
@@ -269,7 +273,7 @@ Now that we've managed to navigate to a specific fruit, let's say we want to loo
 
 ### 💪 YOU DO:
 
-For this link, let's copy the approach we used on our `new` page. Because this is more of a `back` *'button'* so to speak, we don't really want it in our usual nav bar location at the top. Like we did on the `new` page, place the link at the bottom of the `<body>`, right after the `if/else`.
+For this link, let's copy the approach we used on our `new` page. Because this is more of a `back` _'button'_ so to speak, we don't really want it in our usual nav bar location at the top. Like we did on the `new` page, place the link at the bottom of the `<body>`, right after the `if/else`.
 
 Once again, add the correct `href` to the opening tag and some content (`'Back to Fruits Index'` perhaps) and you should have no problem reproducing the following:
 

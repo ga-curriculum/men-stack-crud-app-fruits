@@ -1,82 +1,98 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Level Up - Adding Style](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Level Up - Adding Style](./assets/hero.png)
 
 Now that we've got a fully functional app, it's time to add some styling! These steps are divided into labelled sections, so feel free to follow along for as much or as little as you'd like. If you do choose to complete all the sections, you'll have a fully styled app by the end of this level up.
 
 ## Setting up the styleshets
 
 1. Create the following folders in your project directory: `public` and `public/stylesheets`:
+
 ```bash
 mkdir public public/stylesheets
 ```
 
 1. In your `server.js` file, add the following middleware to serve static files from the directory:
+
 ```javascript
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 // app.use(morgan('dev'));
 
 // new code below this line
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-// new code above this line 
-app.get('/', async (req, res) => {
-  res.render('index.ejs');
+// new code above this line
+app.get("/", async (req, res) => {
+  res.render("index.ejs");
 });
 ```
 
 3. Require the `path` module at the top of your `server.js` file:
+
 ```js
-const methodOverride = require('method-override');
-const morgan = require('morgan')
+const methodOverride = require("method-override");
+const morgan = require("morgan");
 // new code below this line
-const path = require('path')
+const path = require("path");
 ```
 
 4. Create a CSS a `style.css` file within the `stylesheets` folder:
-   
+
 ```bash
 touch public/stylesheets/style.css
 ```
 
 ## Basic Styling
+
 1. Link the `style.css` file to all of your ejs pages by adding the following code within the `<head>` section of your pages:
+
 ```html
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   //new code below this line
   <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 ```
 
 2. Import our font from Google Fonts into `style.css` at the very top of the stylesheet:
+
 ```css
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap");
 ```
 
 3. Add an image to the `index.ejs` page:
+
 ```html
 <body>
   <h1>Welcome to the Fruits app!</h1>
 
   // new code below this line
-  <img class="fruit-pic1" src="https://cdn-icons-png.flaticon.com/128/5312/5312448.png" alt="happy fruit salad bowl"/>
+  <img
+    class="fruit-pic1"
+    src="https://cdn-icons-png.flaticon.com/128/5312/5312448.png"
+    alt="happy fruit salad bowl"
+  />
   //new code above this line
 
   <p>An app for collecting your favorite fruits.</p>
+</body>
 ```
 
 4. Add a footer to the bottom of `index.ejs`, under the closing `</body>` tag (we'll use this to attribute the icon we're using for this app):
+
 ```html
 </body>
 // new code below this line
 <footer>Icons by <a href="https://www.flaticon.com/authors/freepik">Freekpik</a></footer>
 ```
+
 5. Add the following basic styles to style.css:
+
 ```css
 body {
   background: #fff8ed;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,7 +106,7 @@ h1 {
 }
 
 footer {
-  font-size: .7em;
+  font-size: 0.7em;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -106,12 +122,14 @@ footer {
 
 ## Styling links
 
-1. Modify the `<a>` tag on  `index.ejs` to include a class called `fruits-index-link`:
+1. Modify the `<a>` tag on `index.ejs` to include a class called `fruits-index-link`:
+
 ```html
-<a class="fruits-index-link" href="/fruits">
+<a class="fruits-index-link" href="/fruits"></a>
 ```
 
 2. Wrap the text of that same `<a>` tag in a `<div>` with the class name of `index-link-text`. Do this for all links in the app that say "Back to Fruits" (on the `fruits/edit.ejs` and `fruits/show.ejs` pages):
+
 ```html
 <a class="fruits-index-link" href="/fruits">
   <div class="index-link-text">Browse Fruits</div>
@@ -119,8 +137,8 @@ footer {
 ```
 
 3. Add the following style rules to `style.css`:
-```css
 
+```css
 .fruits-index-link {
   text-decoration: none;
 }
@@ -145,28 +163,29 @@ footer {
 .index-link-text:active {
   background-color: #f47b5b;
   box-shadow: 0 2.5px #ffbd59;
-  
-} 
+}
 ```
 
 ## Styling forms
+
 1. On `new.ejs` and `edit.ejs`, add a `<div>` around the `<label>` and `<input>` for `ready to eat`, and apply the class `checkbox-div`:
+
 ```html
 <div class="checkbox-div">
   <label for="ready-to-eat">Ready to Eat?</label>
-  <input type="checkbox" name="isReadyToEat" id="ready-to-eat">
+  <input type="checkbox" name="isReadyToEat" id="ready-to-eat" />
 </div>
 ```
 
 2. Add the following CSS to `style.css`:
-```css
 
+```css
 form {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   background-color: #ffbd59;
   padding: 20px 30px;
   border-radius: 20px;
@@ -178,7 +197,8 @@ form {
   flex-direction: row;
 }
 
-label, input{
+label,
+input {
   margin: 10px 2px 0 2px;
 }
 
@@ -203,39 +223,40 @@ button:active {
 ```
 
 ## Styling `show.ejs`
+
 1. On `show.ejs` add a `<div>` around the content, buttons, and links, and apply the class `fruit-details`:
+
 ```html
 <body>
-  <div class="fruit-details">
-    ...
-  </div>
+  <div class="fruit-details">...</div>
   <a class="fruits-index-link" href="/fruits">
-    <div class="index-link-text">
-      BACK TO FRUITS
-    </div>
+    <div class="index-link-text">BACK TO FRUITS</div>
   </a>
 </body>
 ```
 
 2. Add a second `<div>` around the `delete` form and `edit` link, and give it a class of `fruit-actions`:
+
 ```html
 <div class="fruit-actions">
-          <form class="delete-form" action="/fruits/<%=fruit._id%>?_method=DELETE" method="POST">
-            <button class="delete-button" type="submit">
-              Delete <%= fruit.name %>
-            </button>
-          </form>
-          <a class="edit-link" href="/fruits/<%= fruit._id %>/edit">
-            <div class="edit-text">
-              Edit <%= fruit.name %>
-            </div>
-          </a>
-        </div>
+  <form
+    class="delete-form"
+    action="/fruits/<%=fruit._id%>?_method=DELETE"
+    method="POST"
+  >
+    <button class="delete-button" type="submit">
+      Delete <%= fruit.name %>
+    </button>
+  </form>
+  <a class="edit-link" href="/fruits/<%= fruit._id %>/edit">
+    <div class="edit-text">Edit <%= fruit.name %></div>
+  </a>
+</div>
 ```
 
 3. Add the following CSS to `style.css`:
-```css
 
+```css
 .fruit-actions {
   display: flex;
   flex-direction: row;
@@ -245,8 +266,6 @@ button:active {
   height: 130px;
   padding: 20px 0;
 }
-
-
 
 .delete-form {
   padding: 0;
@@ -284,30 +303,31 @@ button:active {
   font-weight: bold;
   text-align: center;
   width: 70%;
-  height:50px ;
+  height: 50px;
 }
 
-.delete-button:hover{
+.delete-button:hover {
   background-color: #ffbd59;
 }
 
-.delete-button:active{
-  background-color:rgb(217, 108, 78);
+.delete-button:active {
+  background-color: rgb(217, 108, 78);
 }
 
 .edit-text:hover {
   background-color: #769642;
-  
 }
 
 .edit-text:active {
   background-color: #2d4d3a;
-  background-color:rgb(217, 108, 78);
+  background-color: rgb(217, 108, 78);
 }
 ```
 
 ## Styling `fruits/index.ejs`
+
 1. Modify the HTML structure on `fruits/index.ejs` to create a header `<div>` and wrap the fruit names in cards:
+
 ```html
 <body>
   <div class="index-header-div">
@@ -316,21 +336,24 @@ button:active {
   </div>
   <ul>
     <% fruits.forEach((fruit)=> { %>
-      <li>
-        <a class="fruit-cards" href="/fruits/<%=fruit._id%>">
-          <%= fruit.name %>
-        </a>
-      </li>
-      <% }) %>
+    <li>
+      <a class="fruit-cards" href="/fruits/<%=fruit._id%>">
+        <%= fruit.name %>
+      </a>
+    </li>
+    <% }) %>
   </ul>
+</body>
 ```
 
 2. Add class name to the `Add fruit` link called `add-fruit`:
+
 ```html
 <a class="add-fruit" href="/fruits/new">Add fruit</a>
 ```
 
 3. Add the following styles to `style.css`:
+
 ```css
 /* index styling */
 
@@ -342,7 +365,6 @@ ul {
 li {
   list-style: none;
 }
-
 
 .fruit-cards {
   display: flex;
@@ -373,7 +395,7 @@ li {
 .index-header-div {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   width: 98%;
 }
@@ -401,4 +423,3 @@ img {
 ```
 
 Congrats! You have a fully styled app!
-

@@ -1,4 +1,4 @@
-Lecture title: Building a CRUD App with Mongoose, Express, and EJS - Fruits
+Lecture title: MEN Stack CRUD App - Fruits
 Subtitle: microlesson-02
 
 chapter-file-name

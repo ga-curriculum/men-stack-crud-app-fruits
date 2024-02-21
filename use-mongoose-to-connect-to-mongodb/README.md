@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Use Mongoose to Connect to MongoDB](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Use Mongoose to Connect to MongoDB](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to connect to a MongoDB cloud database using the Mongoose JavaScript driver.
 
@@ -18,7 +18,7 @@ First, create a `.env` file in your project's root directory:
 touch .env
 ```
 
-This file will be used to store any sensitive, secret information that application needs to run, but that we don't want to commit to GitHub. Database connection strings definitely qualify: we don't want just anybody to be able to walk into our database using this string!  To ensure that our `.env` file doesn't make its way up to GitHub, create a `.gitignore` file:
+This file will be used to store any sensitive, secret information that application needs to run, but that we don't want to commit to GitHub. Database connection strings definitely qualify: we don't want just anybody to be able to walk into our database using this string! To ensure that our `.env` file doesn't make its way up to GitHub, create a `.gitignore` file:
 
 ```bash
 touch .gitignore
@@ -31,7 +31,7 @@ In that file, add the following:
 node_modules
 ```
 
-The first line above will make sure that the `.env` file isn't tracked by Git.  The second line does the same thing, but for the `node_modules` directory that contains all the dependencies that `npm` has already installed or will install in the future.  Ignoring `node_modules` is not about security, though.  Rather, it reduces the amount of code in our repo by eliminating third party Node packages that can easily be installed via `npm`.  Ignoring `node_modules` doesn't have to be done at the same time as ignoring `.env`, but since we're already in this file, we might as well do it now.
+The first line above will make sure that the `.env` file isn't tracked by Git. The second line does the same thing, but for the `node_modules` directory that contains all the dependencies that `npm` has already installed or will install in the future. Ignoring `node_modules` is not about security, though. Rather, it reduces the amount of code in our repo by eliminating third party Node packages that can easily be installed via `npm`. Ignoring `node_modules` doesn't have to be done at the same time as ignoring `.env`, but since we're already in this file, we might as well do it now.
 
 Now that we're certain Git won't track it, let's edit our `.env` file.
 
@@ -56,13 +56,13 @@ It is important that there are no spaces between `MONGODB_URI`, `=`, and your at
 
 This will make the connection string available in our application on the `process.env.MONGODB_URI` property.
 
-Your connection string will default to a generic unnamed database as indicated by `/?` towards the end of the connection string. However, you ***must*** update this to your preferred database name. In this application, that will be `fruits`. You can specify the preferred database name by adding it between the `/` and the `?` in the connection string. Here's how that will look for this app: `/fruits?`. The full connection string for this app will look something like this:
+Your connection string will default to a generic unnamed database as indicated by `/?` towards the end of the connection string. However, you **_must_** update this to your preferred database name. In this application, that will be `fruits`. You can specify the preferred database name by adding it between the `/` and the `?` in the connection string. Here's how that will look for this app: `/fruits?`. The full connection string for this app will look something like this:
 
 ```plain
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/fruits?retryWrites=true
 ```
 
-Again, do not use the above connection string in your application, it will not work.  Simply note where `/fruits?` exists in the value for `MONGODB_URI` and replicate it in your own version.
+Again, do not use the above connection string in your application, it will not work. Simply note where `/fruits?` exists in the value for `MONGODB_URI` and replicate it in your own version.
 
 Anytime you need to make a new app, you can use this same connection string and only replace the `/fruits?` portion of the string. Ensure the name you assign is unique to that project - for example, once we've used the name `fruits` for this app, you shouldn't use it again. Also ensure it doesn't contain any special characters.
 
@@ -70,12 +70,12 @@ Anytime you need to make a new app, you can use this same connection string and 
 
 With that done, we need to require the `dotenv` package in our `server.js` file, and use it to read the environment variables from this file.
 
-At the ***top*** of your `server.js` file, add:
+At the **_top_** of your `server.js` file, add:
 
 ```js
 //server.js
 
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 ```
 
@@ -86,12 +86,11 @@ Next, we'll need to require `mongoose` in our application so that we can use it 
 ```javascript
 // server.js
 
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
-const express = require('express');
+const express = require("express");
 /* NEW LINE OF CODE REQUIRING MONGOOSE BELOW */
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 ```
 
 Now we can use the `mongoose.connect()` method to connect to our database. We'll pass this method a single argument - the connection string from our `.env` file. This is the environment variable we just made in our `.env` file - `MONGODB_URI`. Add a new line that accomplishes this after the require statements:
@@ -99,10 +98,10 @@ Now we can use the `mongoose.connect()` method to connect to our database. We'll
 ```javascript
 // server.js
 
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -116,7 +115,7 @@ To ease debugging, we'll also add a connection message that will print to our te
 // server.js
 
 /* NEW CODE TO LISTEN FOR THE MONGOOSE 'connected' EVENT */
-mongoose.connection.on('connected', () => {
+mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 ```

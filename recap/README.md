@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Recap](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Recap](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to summarize our app
 
@@ -30,7 +30,7 @@ tktk Hunter, add asset here for MVC architecture (similar to existing content) d
 
 **Server**: An application that listens for HTTP requests.
 
-**`server.js`**: The entry point for our application.  Holds the routes and middleware.  Initiates the connection to MongoDB and starts Express listening for connections.
+**`server.js`**: The entry point for our application. Holds the routes and middleware. Initiates the connection to MongoDB and starts Express listening for connections.
 
 **Controllers (in `server.js`)**: Holds functionality specific to a request route. Using a GET request as an example: Interacts with the model (provided by Mongoose) and passes data received from it to the view engine (EJS). Ultimately, it responds to the client (user) with a fully rendered HTML document.
 
@@ -38,7 +38,7 @@ tktk Hunter, add asset here for MVC architecture (similar to existing content) d
 
 **Database (MongoDB)**: - Persists data. In our case, this data is held in MongoDB Atlas in the cloud.
 
-**View (EJS)**: - A templating language, very similar to HTML, that allows for the execution and injection of JavaScript within the template.  This allows express to mix data (most likely coming from a database), in conjunction with the template's JS functionality to create *dynamic* HTML.  The result is a template file whose HTML changes based on the data it's provided.
+**View (EJS)**: - A templating language, very similar to HTML, that allows for the execution and injection of JavaScript within the template. This allows express to mix data (most likely coming from a database), in conjunction with the template's JS functionality to create _dynamic_ HTML. The result is a template file whose HTML changes based on the data it's provided.
 
 ## Common properties on the `req` object
 

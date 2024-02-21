@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Build and Run server.js](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Build and Run server.js](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to tktk
 
@@ -22,7 +22,7 @@ npm i express
 
 > 📚 Note that `i` is a shortcut for `install`.
 
-Now that we've done this, the Express framework is available for us to use when building our application.  Without this step, if we were to try to run our server code, we would receive an error since our app would be be trying to import a node module that we haven't installed yet.
+Now that we've done this, the Express framework is available for us to use when building our application. Without this step, if we were to try to run our server code, we would receive an error since our app would be be trying to import a node module that we haven't installed yet.
 
 Now that `express` is installed, let's write the basic code needed to create our server.
 
@@ -33,13 +33,13 @@ Here is a helpful outline of what a typical Express app does - let’s put this 
 ```js
 // Here is where we import modules
 // We begin by loading Express
-const express = require('express')
+const express = require("express");
 
-const app = express()
+const app = express();
 
 app.listen(3000, () => {
-  console.log('Listening on port 3000')
-})
+  console.log("Listening on port 3000");
+});
 ```
 
 > 📚 The `server.js` file is typically the main entry point and configuration file for setting up an Express web server.
@@ -55,4 +55,3 @@ nodemon
 Our server should be up and running and you should see something like this:
 
 ![Server Running](./assets/server-running.png)
-
