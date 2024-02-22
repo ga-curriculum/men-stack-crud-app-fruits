@@ -10,7 +10,7 @@ Because `:id` is just a placeholder, we can be more specific in the case of this
 
 The `:fruitId` in the URL is a variable segment, known as a URL parameter. It allows our route to dynamically handle requests for different fruits by their unique `ID`s. So, whenever a user wants to view details about a particular fruit, they will navigate to a URL like `/fruits/12345`, where `12345` is the fruit's `ID`.
 
-## Create the UI
+## Link to the route
 
 To create a way for users to view more details about an individual fruit, we'll transform the fruit names listed on the app's `index` page into clickable links. This will allow users to navigate to the `show` page for each fruit. Currently, our `index.ejs` template displays a list of fruits, but they aren't interactive. 
 
@@ -81,7 +81,7 @@ Let's test a link. Uh-oh! Error!
 
 Looks like this route does not exist. Which makes sense, we haven't built it yet. Let's get started. 
 
-## Create the `show` route
+## Define the route
 
 Let's define and test our `show` route.
 
@@ -111,7 +111,7 @@ The issue arises because Express matches routes in the order they are defined. T
 
 To resolve this, we need to ensure that any route with an  `/:id`  is placed after `/new` in our express applications. 
 
-## Retrieve `fruit` data in the route
+## Build the `read` functionality
 
 We'll use Mongoose's `.findById()` method for fetching a specific fruit by its `_id`. This method is perfect for retrieving a single document based on its unique identifier.
 
@@ -218,10 +218,12 @@ With this code, our application checks the `isReadyToEat` property of the fruit.
 
 Now that we've viewed a specific fruit, let's say we want to look at the details of another fruit. We'll need to navigate back to the `index` page.
 
-### 💪 YOU DO:
+Add the following to the fruit `show` page:
 
-Add a link below the fruit details, to take users back to the index page.
-
-![Show Page With Link](./assets/details-with-back-link.png)
+```html
+<a href="/fruits/">Back to Fruits</a>
+```
 
 Test your link! 
+
+With a working show page, you have successfully performed your next CRUD operation, **Read**. Congrats!

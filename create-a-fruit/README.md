@@ -2,7 +2,7 @@
 
 **Learning objective:** By the end of this lesson, students will be able to create a route that will receive the submission of the form in `/fruits/new`. This route will create a fruit document in the `fruits` collection in their MongoDB Atlas database.
 
-## The CREATE Route
+## The `create` Route
 
 In this section, we will develop a route to handle form submissions for creating new fruits in our database. The route will be `POST /fruits`, following RESTful conventions where `POST` signifies the creation of new data.
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 > Remember, `app.use` allows us to plug additional functionality into express. It basically extends the capabilities of our app.
 
-## Create the route
+## Define the route
 
 Let's start by defining and testing our route. Add the following code to `server.js`, beneath the `new` route:
 
@@ -65,4 +65,4 @@ You should see a collection called "fruits". Click on that collection and see if
 
 ![tktk Hunter- need updated screen shot of fruit](./assets/originals/banana.png)
 
-If you can see your newly created fruit, you have successfully performed your first CRUD operation, Create. Congrats!
+If you can see your newly created fruit, you have successfully performed your first CRUD operation, **Create**. Congrats!

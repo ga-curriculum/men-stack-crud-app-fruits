@@ -36,7 +36,7 @@ Update `show.ejs` with the following:
 
 In this code, we're dynamically generating the href attribute of the "Edit" link by inserting the unique `_id` of the fruit. This ensures that the link leads to the correct edit page for each specific fruit.
 
-## Build the `edit` route
+## Define the route
 
 Because this route URL has three parts, it does not conflict with others and can be placed anywhere among our other routes. 
 
@@ -108,7 +108,8 @@ The Edit form needs to make a `PUT` request to `/fruits/:fruitID` in the same wa
 Remember, that browsers don't support `PUT` requests, so we will use the same `method-override` middleware as we did with the delete route. We'll append `?_method=PUT` to the end of our action URL:
 
 ```html
-<!-- updated form action -->
+<!-- updated form -->
+
 <form action="/fruits/<%=fruit._id%>?_method=PUT" method="POST">
   <label for="name">Name:</label>
   <input type="text" name="name" id="name" />

@@ -71,7 +71,7 @@ All we've added here is a `<form>` with a single button in it. This button, when
 
 The form doesn't have any input fields because we only need the fruit's `ID` to delete it, which is already included in the form's action URL.
 
-## Build the `delete` route
+## Define the route
 
 To build and test the delete functionality in stages, we'll first create a basic route that sends a confirmation message. Then, we'll refactor it to add the actual delete functionality.
 
@@ -88,7 +88,7 @@ This route uses `app.delete` to listen for delete requests. When a delete reques
 Test a delete button in the browser. 
 
 
-## Add `delete` functionality
+## Create `delete` functionality
 
 For this route we'll use the Mongoose method `findByIdAndDelete()` to find the fruit by its `ID` and delete it. Just like the `show` route, fruit `ID` is obtained from the URL parameter `req.params.fruitId`.
 
@@ -108,3 +108,6 @@ Test this updated functionality by visiting the show page of any fruit and click
 ## View `morgan` logs
 
 If you check your terminal, you may notice additional information regarding the various requests has been logged. This is what the `morgan` middleware does for us. It's a nice way to have some debug information automatically logged for us without us manually setting it up. If at any point, you feel your terminal is getting crowded with additional information you don't need, simply comment out `app.use(morgan('dev'));`
+
+
+If you are able to delete a fruit, you have successfully performed your next CRUD operation, **Delete**. Congrats!

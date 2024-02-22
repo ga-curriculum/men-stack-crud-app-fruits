@@ -1,6 +1,6 @@
 # ![MEN Stack CRUD App - Fruits - Recap](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to summarize our app
+**Learning objective:** By the end of this lesson, students will be able to summarize the application architecture and technologies used.
 
 We've finished building our first large app! Let's zoom out and observe the moving pieces here.
 

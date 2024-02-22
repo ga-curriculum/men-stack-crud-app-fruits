@@ -45,5 +45,7 @@ We can now test the route by submitting our form. Make sure you are redirected c
 
 ### You did it!
 
+If you can see your newly updated fruit, you have successfully performed your final CRUD operation, **Update**. Congrats!
+
 With this final route we have full CRUD and all seven RESTful routes on the fruit model! Well done! 🎉
 

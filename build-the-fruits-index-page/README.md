@@ -8,7 +8,7 @@ Now that we have created a way for users to add fruits to our database, the next
 
 In keeping with RESTful routing conventions, the `url` for this route will be: `/fruits`.
 
-## Create the route
+## Define the route
 
 Let's start by defining and testing the route. Add the following code to `server.js`, beneath the landing page route `/` and above the `/fruits/new` route:
 
@@ -149,4 +149,14 @@ app.post("/fruits", async (req, res) => {
   await Fruit.create(req.body);
   res.redirect("/fruits"); // redirect to index fruits
 });
+```
+
+## Link to Index Page
+
+Now that our index page is up and running, it's time to make it easily accessible. We'll add a link on the homepage of our application that users can click to visit the index page. This link will be labeled "Browse Fruits" and will direct users to the index page where they can view all the fruits listed.
+
+Add the following HTML snippet to the application homepage:
+
+```html
+<a href="/fruits">Browse Fruits</a>
 ```
