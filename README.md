@@ -27,7 +27,7 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 | [Delete a Fruit](./delete-a-fruit/README.md)                                         |     --     |  --   | Build `delete` functionality in a `DELETE` route |
 | [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   |     --     |  --   | Construct an `edit` route and view     |
 | [Update a Fruit](./update-a-fruit/README.md)                                         |     --     |  --   | Build `update` functionality in a `PUT` route |
-| [Recap](./recap/README.md)                                                           |     --     |  --   | tktk skills covered                    |
+| [Recap](./recap/README.md)                                                           |     --     |  --   | Review technologies used and application architecture |
 | **Total content**                                                                    |     --     |  --   |                                        |
 
 ## Level Up content
