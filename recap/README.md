@@ -52,8 +52,6 @@ The key point is that your server is handling the Controller part of the MVC—m
 
 **`req.params`**: Object holding the URL parameters of a URL. The keys on this object will match the string provided after the `:` in the route. The value of each key will match the data from that segment in the URL.
 
-tktk could add examples on the above for clarity? But also didn't want this to get too in the weeds, but the above might be a little abstract without concrete examples.
-
 ## Common methods on the `res` object
 
 **`res.render()`**: Always provided a string as the first argument. That string should be a file path and will never start with a `/`.
