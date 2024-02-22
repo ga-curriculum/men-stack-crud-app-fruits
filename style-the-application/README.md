@@ -1,5 +1,7 @@
 # ![MEN Stack CRUD App - Fruits - Level Up - Adding Style](./assets/hero.png)
 
+**Learning objective** : By the end of this lesson, students will be able to enhance the user experience of their full-stack applications by effectively integrating CSS styling through the use of static files.
+
 Now that we've got a fully functional app, it's time to add some styling! These steps are divided into labelled sections, so feel free to follow along for as much or as little as you'd like. If you do choose to complete all the sections, you'll have a fully styled app by the end of this level up.
 
 ## Setting up the styleshets
