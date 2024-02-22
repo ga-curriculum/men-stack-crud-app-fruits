@@ -23,7 +23,7 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 | [Create a Fruit](./create-a-fruit/README.md)                                         |     --     |  --   | Build `create` functionality in a `POST` route |
 | [Build the Fruits Index Page](./build-the-fruits-index-page/README.md)               |     --     |  --   | Find and render all fruits on an `index` page  |
 | [Linking Pages within an App](./linking-pages-within-an-app/README.md)               |     --     |  --   | Integrating a nav bar across multiple pages |
-| [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 |     --     |  --   | tktk skills covered                    |
+| [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 |     --     |  --   | Construct a `show` route and view      |
 | [Delete a Fruit](./delete-a-fruit/README.md)                                         |     --     |  --   | tktk skills covered                    |
 | [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   |     --     |  --   | tktk skills covered                    |
 | [Update a Fruit](./update-a-fruit/README.md)                                         |     --     |  --   | tktk skills covered                    |
