@@ -4,19 +4,21 @@
 
 ## The CREATE Route
 
-The purpose of this route is to insert the data that is sent along with the form submission from the new fruits page into our MongoDB database. In keeping with RESTful routes conventions, the URL for this route will be: `/fruits`. The HTTP method associated with this route is `POST`. Remember that a `POST` HTTP method implies creating data, so it is a good choice for this route. By looking at the just the path (`/fruits`) and the HTTP method (`POST`), we can quickly determine that this route creates fruits in the database.
+In this section, we will develop a route to handle form submissions for creating new fruits in our database. The route will be `POST /fruits`, following RESTful conventions where `POST` signifies the creation of new data.
 
-Remember that the user will be submitting a form (as opposed to clicking a link) in `/fruits/new` to get this route. When this form submission happens, the browser will make a request to the url/method specified, including any form data in the body of the request. For reasons not worth going into at this point, Express doesn't easily allow us to access this data in our route. Because of this, we will need to add some middleware that will allow us to easily access the form data in the request's body. In our `server.js` file let's add the following middleware beneath the line of code that brings in our Fruit model.
+When a user submits the form on the `/fruits/new` page, the browser sends a request to our server with the form data. To access this data in Express, we need to use middleware. Specifically, we'll use `express.urlencoded`. This middleware parses incoming request bodies, extracting form data and converting it into a JavaScript object. It then attaches this object to the `req.body` property of the request, making the form data easily accessible within our route handlers.
+
+To enable this functionality, add the following line to `server.js`, right after importing the `Fruit` model:
 
 ```javascript
 app.use(express.urlencoded({ extended: false }));
 ```
 
-Remember, `app.use` allows us to plug additional functionality into express. It basically extends the capabilities of our app. Here, we plug in `express.urlencoded`, which looks for form data in the body of any requests that come in. If it finds any, it creates a JS object representation of the form data submitted. It then creates a new property on the `req` param of any routes that match the incoming request called `body`. Finally, it assigns the JS object representing the form data to `req.body`. We now are able to use `req.body` to see what data the user entered when they submitted the form on the `/fruits/new` page.
+> Remember, `app.use` allows us to plug additional functionality into express. It basically extends the capabilities of our app.
 
 ## Create the route
 
-Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the new page route we've already created and above the `app.listen()` method (remember, all routes should be defined above `app.listen()`).
+Let's start by defining and testing our route. Add the following code to `server.js`, beneath the `new` route:
 
 ```javascript
 // server.js
@@ -28,11 +30,11 @@ app.post("/fruits", async (req, res) => {
 });
 ```
 
-Resubmit the form in `/fruits/new`. You'll instantly be redirected back to `/fruits/new`, but if you check your terminal, you should see a JS object representation of the form data you just submitted.
+In the browser, enter some data and submit the form on the `/fruits/new` page. You'll instantly be redirected back to `/fruits/new`, but if you check your terminal, you should see a JS object representation of the form data you just submitted.
 
-## Build our create function in our post route
+## Build the `create` functionality
 
-Now that we can confirm our form submits its data to the route we have scaffolded, let's add the logic that will allow us to create a fruit once this route is hit:
+Now that we've confirmed our form submits data to the `POST` route, let's add the logic to create a `fruit` in our database:
 
 ```javascript
 // server.js
@@ -49,20 +51,18 @@ app.post("/fruits", async (req, res) => {
 });
 ```
 
-In the above code snippet, we are using a conditional to change `req.body.isReadyToEat` to a boolean value so that it matches our schema for the Fruits model. If the user checked the "Ready to Eat?" checkbox, `req.body.isReadyToEat` will be set to the string 'on'. It's a little confusing why `req.body.isReadyToEat` would be set to 'on', but basically it has to do with how browsers deal with checkboxes. There's not much we can do to change how the data comes in initially, but we can reset that value to `true` before sending it to MongoDB. If the user didn't check the "Ready to Eat?" checkbox, `req.body.isReadyToEat` will be `undefined`. Again this has to do with how the browser handles checkboxes. In any case, if `req.body.isReadyToEat` isn't set to the string 'on', we will set it to false. As annoying as this is, it's a good lesson. Your form data might not always match what's in your model, and sometimes you'll need to mess with it a little to get the two to align.
+In the code snippet above, we have to do a little bit of data manipulation before our new fruit is ready to be sent to the database. The `if` statement checks the value of `req.body.isReadyToEat`. This field comes from a checkbox in our form. In web forms, a checked checkbox sends the value `"on"`, while an unchecked checkbox sends no value (thus, it's undefined). We convert this "on" or undefined value to a Boolean (true or false) to match our schema's expected data type for `isReadyToEat`.
 
-After that, we will send the contents of the form (`req.body`) over to our database via the `.create()` method on the `Fruit` model. Once that fruit is successfully created, we will respond with a redirect to `/fruits/new`.
+Next, we use `Fruit.create(req.body)` to add a new `fruit` to our database. `req.body` contains the form data sent by the user, which now includes our corrected `isReadyToEat` value. `Fruit.create()` is an asynchronous operation; we use `await` to ensure the database operation completes before the function continues.
 
-Let us test that our method works by navigating to our MongoDB Atlas dashboard for the fruits database. While on the dashboard for MongoDB Atlas, click on the "Collections" section for your database.
+Finally, we redirect the user back to the form page using `res.redirect("/fruits/new")`. This is a common practice after processing form data to prevent users from accidentally submitting the form multiple times by refreshing the page.
 
-![tktkcollections](./assets/originals/collections.png)
+Let's verify our data was saved by navigating to our MongoDB Atlas dashboard. Once in the dashboard, click on the "Collections" section for your database.
 
-Once you can see the collections for your database, find the database that corresponds to this fruits app and click on it. You should see a collection called "fruits". Click on that collection and see if you can find the document of your newly created fruit.
+![tktk Hunter- need updated screen shot of collections](./assets/originals/collections.png)
 
-![tktkbanana](./assets/originals/banana.png)
+You should see a collection called "fruits". Click on that collection and see if you can find the document of your newly created fruit.
 
-If you can see your newly created fruit you have successfully created a new fruit from your rendered form. Congrats!!!
+![tktk Hunter- need updated screen shot of fruit](./assets/originals/banana.png)
 
-[tktk Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/create-a-fruit-start)
-
-[tktk Complete Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/create-a-fruit-complete)
+If you can see your newly created fruit, you have successfully performed your first CRUD operation, Create. Congrats!

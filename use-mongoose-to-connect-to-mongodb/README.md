@@ -66,9 +66,9 @@ MONGODB_URI=mongodb+srv://<username>:<password>@sei.azure.mongodb.net/?retryWrit
 
 This will make the connection string available in our application on the `process.env.MONGODB_URI` property.
 
-### Name your database
+### Name your database collection
 
-Your connection string will default to a generic unnamed database as indicated by the `/?` towards the end of the connection string. However, you **_must_** update this to your preferred database name. In this application, that will be `fruits`. You can specify the preferred database name by adding it between the `/` and the `?` in the connection string. 
+Your connection string will default to a generic unnamed database collection as indicated by the `/?` towards the end of the connection string. However, you **_must_** update this to your preferred collection name. In this application, that will be `fruits`. You can specify the preferred collection name by adding it between the `/` and the `?` in the connection string. 
 
 Here's how that will look for this app: `/fruits?`. The full connection string for this app will read like this:
 
@@ -78,7 +78,7 @@ MONGODB_URI=mongodb+srv://<username>:<password>@sei.azure.mongodb.net/fruits?ret
 
 > Again, do not use the above connection string in your application, it will not work. Simply note where `/fruits?` exists in the value for `MONGODB_URI` and replicate it in your own version.
 
-Anytime you need to make a new app, you can use this same connection string and only replace the `/fruits?` portion of the string. Ensure the name you assign is unique to that project - for example, once we've used the name `fruits` for this app, you shouldn't use it again. Also, your database name should not contain any special characters.
+Anytime you need to make a new app, you can use this same connection string and only replace the `/fruits?` portion of the string. Ensure the name you assign is unique to that project - for example, once we've used the name `fruits` for this app, you shouldn't use it again. Also, your collection name should not contain any special characters.
 
 ## Connecting to MongoDB in `server.js`
 
