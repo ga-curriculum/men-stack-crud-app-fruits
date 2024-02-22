@@ -1,16 +1,18 @@
 # ![MEN Stack CRUD App - Fruits - Build the New Fruit Page](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to build an express route that renders a form that will allow users to enter data that will be sent to the server for processing.
+**Learning objective:** By the end of this lesson, students will be able to construct a `new` route in Express that renders a form for collecting user data.
 
 ## The NEW Route
 
-The act of creating a fruit actually takes _two_ separate routes. The _new_ route, that we build in this section, handles _just_ the act giving the user a form into which the user can enter data. That form will then send its data off to a _completely different_ route, which we will build in the next section, who's sole purpose is to insert that data into the database. We could use one route to handle both aspects of creating a fruit, but that route would be overly complex. Using two different routes is helpful because it keeps our routes simple and easy to understand.
+Creating a new fruit in our application involves two distinct steps, each handled by separate routes. The first step is presenting the user with a form to enter fruit data. This is the responsibility of the "new" route, which we'll build in this section. Its sole purpose is to display a form for data entry.
+
+Once the user fills out the form and submits it, the data is sent to another route, which we'll construct in the next section. This second route is dedicated to processing the submitted data and inserting it into the database.
 
 ## Create the route
 
-In keeping with RESTful routes conventions, the url for this route will be: `/fruits/new`.
+In keeping with RESTful routing conventions, the url for this route will be: `/fruits/new`.
 
-Let's start by defining the route and testing it as soon as possible. Add the following code to `server.js`, beneath the landing page route we've already created and above the `app.listen()` method (remember, all routes should be defined above `app.listen()`).
+Let's start by defining the route and testing it. Add the following code to `server.js`, beneath the landing page route and above the `app.listen()` method (remember, all routes should be defined above `app.listen()`).
 
 ```javascript
 // server.js
@@ -21,20 +23,20 @@ app.get("/fruits/new", (req, res) => {
 });
 ```
 
-Test it by visiting `localhost:3000/fruits/new` in your browser's address bar.
+Test it by visiting `localhost:3000/fruits/new` in your browser.
 
 ## Create the new template
 
-Now that the route is set up, let's create the template we want this route to render for the user. While we're at it, let's also put all the templates for our fruits collection inside a sub-folder within the `views` directory we already created:
+Let's now create the template for our "new" route. This template will provide a user-friendly interface for adding new fruits to our application. To keep our templates organized, especially as our application grows, we'll place this new template in a dedicated sub-folder within the `views` directory.
 
 ```bash
 mkdir views/fruits
 touch views/fruits/new.ejs
 ```
 
-While this application will only have one model, you can imagine that if an app had several different models, we'd want to have a `new.ejs` template for every single model. This is why we create a sub-folder for the views associated with each different model.
+Organizing our templates into model-specific sub-folders is a good practice, especially for larger applications with multiple models. Each model can have its own `new.ejs` template, among others.
 
-Inside this template file, add the HTML boilerplate and an `<h1>` to get started:
+Now, let's add some basic content to our `new.ejs` template for fruits:
 
 ```html
 <!-- views/fruits/new.ejs -->
@@ -52,11 +54,11 @@ Inside this template file, add the HTML boilerplate and an `<h1>` to get started
 </html>
 ```
 
-Our goal throughout this project will be to test pieces of this application as soon as possible, so while it's tempting to go right on ahead and create the form users will need, let's update the route first so we can test it.
+To ensure best practice, we'll focus on testing each component as soon as it's developed. This approach not only helps in identifying and fixing issues early but also in understanding each part of the application thoroughly. So, before we dive into creating the user form, let's first update and test the route. 
 
 ## Updating the new route
 
-Instead of `res.send`, we'll want to render the `new.ejs` template found in the `views/fruit` directory. Here's the full route to get that done:
+Instead of `res.send`, let's render the `new.ejs` template we just created in the `views/fruit` directory:
 
 ```javascript
 // server.js
@@ -67,11 +69,11 @@ app.get("/fruits/new", (req, res) => {
 });
 ```
 
-We should be able to test it by again visiting `localhost:3000/fruits/new` in our browser, and this time we should see the `<h1>` message on the page.
+Visit `localhost:3000/fruits/new` in the browser. This time we should see the `<h1>` rendered to the page.
 
-## Creating the form
+## Create the form
 
-Finally, let's add the actual form element to our template page, with inputs and labels for both of the properties of the Fruit model. While the `name` field should be a text input, the boolean `isReadyToEat` field is probably best represented as a checkbox element.
+Finally, let's add a form to our `new.ejs` template. This form will allow users to input data for creating a new fruit. In our Fruit model, we have two properties: `name` and `isReadyToEat`. The `name` field should be a text input where users can type the name of the fruit. For the `isReadyToEat` property, which is a boolean, we'll use a checkbox input. This way, users can check the box if the fruit is ready to eat.
 
 ```html
 <!-- views/fruits/new.ejs -->
@@ -79,23 +81,17 @@ Finally, let's add the actual form element to our template page, with inputs and
 <body>
   <h1>Create a New Fruit!</h1>
   <form action="/fruits" method="POST">
-    <label>
-      Name:
-      <input type="text" name="name" />
-    </label>
-    <label>
-      Ready to Eat?
-      <input type="checkbox" name="isReadyToEat" />
-    </label>
-    <button type="submit">Add fruit</button>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" />
+
+    <label for="isReadyToEat">Ready to Eat?</label>
+    <input type="checkbox" name="isReadyToEat" id="isReadyToEat" />
+
+    <button type="submit">Add Fruit</button>
   </form>
 </body>
 ```
 
-You'll notice that the form has two attributes `action` and `method`. These respectively define the URL and HTTP method for the request that the browser makes when the user submits the form. We'll discuss this further in the next section.
+In the form we've just created, there are two important attributes: `action` and `method`. The `action` attribute specifies the URL where the form data should be sent when the form is submitted. In our case, it's set to `/fruits`. The `method` attribute defines the HTTP `method` the browser should use to send the form data. We've set this to `POST`, which is appropriate for creating new data on the server.
 
-This takes care of the user interface for creating a new fruit! Sadly, it isn't really testable yet, since we don't have the route responsible for handling the HTTP request that this form would generate. We'll handle the submission of this form next! For now, if you submit the form, the browser will tell you `Cannot POST /fruits`
-
-[Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-new-fruit-form-start)
-
-[Complete Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-new-fruit-form-complete)
+Now that our form is set up, it provides the user interface needed to create a new fruit. However, it's not functional yet. When you try to submit the form, you'll probably see an error message like `Cannot POST /fruits`. This is because we haven't yet created the route to handle the form submission. That's our next step! We'll set up the corresponding server-side route to process and save the form data.
