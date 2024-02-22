@@ -1,62 +1,83 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Build the Fruit Model](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Build the Fruit Model](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model.
+**Learning objective:** By the end of this lesson, students will be able to define and export a Mongoose model.
+
+## Creating a Model
+
+As we progress with our application, the next essential step is to create a schema and model for our fruits. This process will define how our fruit data is structured and stored in the database. By establishing a clear schema, we ensure consistency and reliability in the data we handle. Additionally, the model created from this schema will serve as the main interface for our application to interact with the MongoDB database, allowing us to perform CRUD operations on fruit data. Let's dive into creating our first Mongoose schema and model for the fruits in our application.
 
 ## Create the model file `fruit.js`
 
-Let's create a directory that will hold the file for our fruit model (`fruits.js`):
+Let's create a directory that will hold the file for our fruit model `fruits.js`:
 
 ```bash
 mkdir models
 touch models/fruit.js
 ```
 
-It might seem silly to have a directory with just a single file in it, but it's a good habit to get into.  Hypothetically, if we were to decide to add more models later on, it would be nice to have a separate file for each model.  At that point, the directory would become more useful, from a structural standpoint.
+Creating a dedicated directory for a single file may seem unnecessary, but it's actually a strategic approach in software development. This practice is beneficial for future scalability. For instance, if you later decide to add more models to your application, having a designated `models` directory allows for clear organization, with each model having its own separate file. This makes your codebase more structured and manageable.
 
-The `fruit.js` file should:
+Here's how we'll structure our `fruit.js` file:
 
-1. Create the schema, which basically defines the properties of a fruit
-2. Link the schema with a *model*, which is essentially a reference to the collection in MongoDB
-3. Export that model, so your `server.js` file can use it.
+- **Create the schema:** We'll begin by defining the schema for a `fruit`. This schema is like a blueprint, describing the properties and characteristics of what a `fruit` object should include.
 
-You should name models and model files singularly. For example, `fruit.js` instead of `fruits.js`. This is because a single file should be exporting just one model.
+- **Link the schema to a Model:** Next, we'll create a model from our schema. This model is essentially a representation of a MongoDB collection. By linking our schema to this model, we connect the defined structure of our `fruit` data to the corresponding collection in the database.
+
+- **Export the Model:** Finally, we need to make sure our model is available for use elsewhere in our application. We'll do this by exporting the model from the fruit.js file.
+
+You should name models and model files singularly. For example, `fruit.js` instead of `fruits.js`. This is because a model is a singular representation of the data you are storing.
 
 ## Create the fruits schema
 
-Before we're able to define our model, we must first import the mongoose library into our `fruit.js` file, like so:
+Before we define our model, we must first import the mongoose library into our `fruit.js` file:
 
 ```javascript
 // models/fruit.js
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 ```
 
-With that out of the way, we can define the schema, which provides a consistent structure to our data. Remember, schemas are just regular javascript objects, where the key represents the name of the property we want our data to have, and the value is used to define the data type and any restrictions on the values stored in that property.
+Now let's define the schema for our `fruit` model. A schema in Mongoose is a way to structure the data in our database. It's essentially a JavaScript object where each key represents a property of our data. The value assigned to each key specifies the type of data we expect for that property and can also include certain constraints or rules.
 
-In this case, our fruit model will be pretty simple, with a `name` property of type `String` and an `isReadyToEat` property of type `Boolean`. Here's how we'll define that in our `fruit.js` file:
+For our `fruit` model, we want to keep it simple. We'll have two properties: `name`, which will be a string, and `isReadyToEat`, which will be a boolean indicating whether the fruit is ready to be eaten. 
+
+Here's what this would look like in our `fruit.js` file:
 
 ```javascript
 // models/fruit.js
 
-const fruitSchema = mongoose.Schema({
-    name: String,
-    isReadyToEat: Boolean
+const mongoose = require('mongoose');
+
+const fruitSchema = new mongoose.Schema({
+  name: String,
+  isReadyToEat: Boolean,
 });
 ```
 
 ## Register the model
 
-Once we've defined our schema, we can then tell mongoose to create a collection in MongoDB and validate that collection's data using the schema. We do this using the `mongoose.model` method:
+After defining our schema, the next step is to inform Mongoose about the collection in MongoDB that will use this schema for its documents. We achieve this by creating a model. A model in Mongoose serves as a constructor for creating new documents, and it also enforces the structure defined in the schema.
+
+To create a model, we use the `mongoose.model` method. This method takes two arguments: the `name` of the model and the `schema` to apply to that model. 
+
+Here's how we define the model for our `fruit` schema:
 
 ```javascript
 // models/fruit.js
 
-const Fruit = mongoose.model('Fruit', fruitSchema);
+const mongoose = require('mongoose');
+
+const fruitSchema = new mongoose.Schema({
+  name: String,
+  isReadyToEat: Boolean,
+});
+
+const Fruit = mongoose.model("Fruit", fruitSchema); // create model
 ```
 
-There is a convention to use a capital letter to start off database models, so name your model `Fruit`, as opposed to `fruit`.
+> Note: There is a convention to use a capital letter for database model names, so name your model `Fruit`, as opposed to `fruit`.
 
-## Export the model from the fruit.js file
+## Export the model from the `fruit.js` file
 
 Next, we want to export the `Fruit` model we just created, so that the rest of our application has access to it.
 
@@ -68,25 +89,23 @@ The `Fruit` model is what we will use to perform CRUD on the collection.
 module.exports = Fruit;
 ```
 
-## Import the model into the `server.js` file
+## Import the model into `server.js`
 
-We'll need that model in many of the routes we define in `server.js`, so let's add a require statement to `server.js`. Since we need our application to be connected to our MongoDB instance before connecting our model, this code should be placed directly after the mongoose connection code, like so:
+Let's integrate the `Fruit` model into our `server.js`. This is important because the routes we define in `server.js` will need to use this model to interact with our MongoDB database. To do this, we'll add a require statement for our model in `server.js`. It's crucial to ensure that this require happens after we establish a connection to our MongoDB instance. This way, our model can effectively interact with the database once it's connected.
+
+Here's how we can include the `Fruit` model in `server.js`:
 
 ```javascript
 // server.js
 
 mongoose.connect(process.env.MONGO_URI);
 
-mongoose.connection.on('connected', () => {
-  console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
-})
+mongoose.connection.on("connected", () => {
+  console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+});
 
-// NEW LINE OF CODE REQUIRING THE MODEL HERE
-const Fruit = require('./models/fruit.js');
+// Import the Fruit model
+const Fruit = require("./models/fruit.js");
 ```
 
-And that's it! Our model is set up and ready to be used in the request handling functions defined in our express routes.
-
-[Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-fruit-model-start)
-
-[Complete Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-fruit-model-complete)
+With this addition, we're ready to use our `Fruit` model in the request handling functions defined in our express routes. This setup will allow us to perform database operations like creating, reading, updating, and deleting fruit documents in MongoDB.

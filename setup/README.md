@@ -1,4 +1,6 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - tktk Microlesson Name](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Setup](./assets/hero.png)
+
+## Setup
 
 Open your Terminal application and navigate to your `~/code/ga/lectures` directory:
 
@@ -6,11 +8,20 @@ Open your Terminal application and navigate to your `~/code/ga/lectures` directo
 cd ~/code/ga/lectures
 ```
 
-Make a new directory called `fruits`, then enter this directory:
+Make a new repository on [GitHub](https://github.com/) named `men-stack-crud-app-fruits`.
+
+Clone a copy of your remote repo locally by using the `git clone` command:
 
 ```bash
-mkdir fruits
-cd fruits
+git clone https://git.generalassemb.ly/<your-username>/men-stack-crud-app-fruits.git
+```
+
+> 🚨 Do not copy the above command. It will not work. Your GitHub username will replace <github-username> (including the < and >) in the URL above.
+
+Next, `cd` into your new cloned directory, `men-stack-crud-app-fruits`:
+
+```bash
+cd men-stack-crud-app-fruits
 ```
 
 In this directory create a `server.js` file:

@@ -1,44 +1,50 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Recap](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Recap](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to summarize our app
+**Learning objective:** By the end of this lesson, students will be able to summarize the application architecture and technologies used.
 
 We've finished building our first large app! Let's zoom out and observe the moving pieces here.
 
-tktk for QA, might want to refine the below definitions, just a starting point here.
+## Reviewing the Technology and MVC Architecture of Our Web Application
 
-## Technology used
+In this section, we'll combine an overview of the technologies used in our web application and how they fit into the Model-View-Controller (MVC) architecture.
 
-tktk this header name could use work? If you can think of something better please change it.
+### Technologies Employed
 
-**JavaScript**: The Programming language of this tech stack
+- **JavaScript:** The backbone programming language used in this tech stack.
 
-**Node.js**: The terminal application that executes our JavaScript code in the terminal.
+- **Node.js:** Executes JavaScript code outside of a browser, in a terminal environment.
 
-**Express**: The web framework managing the request-response cycle.
+- **Express:** A web framework managing the request-response cycle within the application.
 
-**EJS**: The view engine we're using to send HTML to clients.
+- **EJS (Embedded JavaScript):** The template engine for rendering dynamic HTML pages based on data.
 
-**MongoDB**: Document-based database that persists (i.e. saves) data outside of the application.
+- **MongoDB:** A document-based database for storing data persistently.
 
-**Mongoose**: Allows our app to interact with MongoDB to create, read, update, and delete data. Also allows us to define the shape of data (e.g. what properties exist on a model as well as their data types).
+- **Mongoose:** An Object Data Modeling (ODM) library for MongoDB and Node.js, simplifying interactions with the database and enforcing data structure through schemas.
 
-## Request-response in MVC architecture
+### MVC Architecture in Context
 
-tktk Hunter, add asset here for MVC architecture (similar to existing content) diagramming the below:
+- **Client:** The browser or application initiating HTTP requests.
 
-**Client**: A browser (or other application) that issues HTTP requests.
+- **Server:** Listens for and processes incoming HTTP requests.
 
-**Server**: An application that listens for HTTP requests.
+- **server.js:** The core of the application, orchestrating routes, middleware, database connections, and Express server setup.
 
-**`server.js`**: The entry point for our application.  Holds the routes and middleware.  Initiates the connection to MongoDB and starts Express listening for connections.
+- **Controllers (in server.js):** Handle specific request routes, interact with Mongoose models, and coordinate data flow between the model and view.
 
-**Controllers (in `server.js`)**: Holds functionality specific to a request route. Using a GET request as an example: Interacts with the model (provided by Mongoose) and passes data received from it to the view engine (EJS). Ultimately, it responds to the client (user) with a fully rendered HTML document.
+- **Model (Mongoose):** Interfaces with MongoDB, ensuring data adheres to predefined schemas.
 
-**Model (Mongoose)**: Interfaces with the database. Ensures that data passing through it conforms to a provided schema.
+- **Database (MongoDB):** Stores and manages data persistently, accessed via cloud-based MongoDB Atlas in this application.
 
-**Database (MongoDB)**: - Persists data. In our case, this data is held in MongoDB Atlas in the cloud.
+- **View (EJS):** Utilizes templating to generate dynamic HTML pages. By integrating JavaScript into templates, EJS produces HTML that changes based on the data provided.
 
-**View (EJS)**: - A templating language, very similar to HTML, that allows for the execution and injection of JavaScript within the template.  This allows express to mix data (most likely coming from a database), in conjunction with the template's JS functionality to create *dynamic* HTML.  The result is a template file whose HTML changes based on the data it's provided.
+### If our routes are defined in server.js, is this structure really considered MVC?
+
+Yes, even if the routes and controller functions are defined within the server file, your application can still be considered to follow the Model-View-Controller (MVC) structure. The key aspect of MVC is the separation of concerns—structuring your application so that the data management (Model), user interface (View), and the application logic (Controller) are handled independently. How these components are physically organized in your codebase can vary.
+
+In many applications, especially larger and more complex ones, it's common to see routes and controller logic separated into their own directories and files for better organization and maintainability. However, in smaller applications or in projects where simplicity is preferred, keeping the controller logic within the main server file is perfectly acceptable and still adheres to the MVC principles.
+
+The key point is that your server is handling the Controller part of the MVC—managing the request-response cycle, interacting with the Model for data, and rendering the View. As long as these responsibilities are clearly defined and separated from each other within your application, it aligns with the MVC architecture.
 
 ## Common properties on the `req` object
 
@@ -53,3 +59,4 @@ tktk could add examples on the above for clarity? But also didn't want this to g
 **`res.render()`**: Always provided a string as the first argument. That string should be a file path and will never start with a `/`.
 
 **`res.redirect()`**: - Always provided a string as the first argument. That string should be a valid route and will always start with a `/`.
+

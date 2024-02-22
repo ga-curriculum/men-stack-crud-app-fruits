@@ -1,190 +1,163 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits - Build the Edit Fruit Page](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Build the Edit Fruit Page](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to create an edit page with a form pre-populated with the relevant data of the fruit being edited.
+**Learning objective:** By the end of this lesson, students will understand how to build and utilize the `edit` route in an Express application, enabling users to modify existing data in a database.
 
-## Step 1: Conceptualize the EDIT route
+## The `edit` route
 
-The `Edit` route presents the user with a form for editing the details of a single fruit in our database. If we examine the RESTful routing guidelines, we'll notice that the corresponding URL for this route is `GET /fruits/:fruitId/edit`, where `:fruitId` represents the unique identifier of the fruit we intend to edit.  One thing worth noting is that this is the only RESTful route that contains three segments.  The final segment, (`/edit`) is what distinguishes this route from the `show` route as well as any other route.
+The `Edit` route presents the user with a form for editing the details of a single fruit in our database. If we follow RESTful routing conventions, the corresponding URL for this route is `GET /fruits/:fruitId/edit`, where `:fruitId` represents the unique identifier of the fruit we intend to edit. 
 
-Also, compare your new/create and edit/update RESTful routes conventions.  The full process of updating a fruit is similar to the process of creating a fruit in that both processes require two routes: a form route for collecting user data, and a second route for processing the data.  For updating a fruit, the form route is called Edit and the processing route is called Update.  Here's how the two processes line up:
+One thing worth noting is that this is the only RESTful route that contains three segments `/fruits/:fruitId/edit`
 
-| Process | Form Route | Processing Route |
-| ---- | ---- | ---- |
-| Create a fruit| New (`GET /fruits/new`) | Create (`POST /fruits`) |
+Also, compare your new/create and edit/update RESTful routes conventions. The full process of updating a fruit is similar to the process of creating a fruit in that both processes require two routes: a form route for collecting user data, and a second route for processing the data. For updating a fruit, the form route is called Edit and the processing route is called Update. 
+
+Here's how the two processes compare:
+
+| Process        | Form Route                         | Processing Route                |
+| -------------- | ---------------------------------- | ------------------------------- |
+| Create a fruit | New (`GET /fruits/new`)            | Create (`POST /fruits`)         |
 | Update a fruit | Edit (`GET /fruits/:fruitId/edit`) | Update (`PUT /fruits/:fruitId`) |
 
-We'll just be dealing with the `Edit` route for this section, but it's good to keep the above table in mind, especially as we begin creating the EJS file for this route.
+In this section, we'll focus on the `edit` route. 
 
-## Step 2: Create the UI that will issue the request to that route
+## Link to the edit page
 
-Add a link just after the delete form and before the "Back to fruits index" link on the show page. Adjust the following code to our `views/fruits/show.ejs` page:
+To provide a way for users to navigate to the edit page of a specific fruit, we'll add a link on the `show` page. This link will be placed right after the delete button and before the link that takes the user back to the main fruit list. 
+
+Update `show.ejs` with the following:
 
 ```html
 <form action="/fruits/<%=fruit._id%>?_method=DELETE" method="POST">
-	<button type="submit">
-		Delete <%= fruit.name %>
-	</button>
+  <button type="submit">Delete <%= fruit.name %></button>
 </form>
 <!-- add edit page link here -->
 <a href="/fruits/<%= fruit._id %>/edit">Edit <%= fruit.name %></a>
-<a href="/fruits">Back to fruits index</a>
+<a href="/fruits">Back to Fruits</a>
 ```
 
-Nothing really of note here.  Just remember that we're dynamically inserting the fruit's `_id` property into the `href` attribute of the `<a>` tag by using `<%= fruit._id %>`
-## Step 3: Define the route in `server.js`
+In this code, we're dynamically generating the href attribute of the "Edit" link by inserting the unique `_id` of the fruit. This ensures that the link leads to the correct edit page for each specific fruit.
 
-Keep this route grouped together with your other routes.  You can place this route anywhere, as long as it comes after any middleware and before `app.listen`.   Since it is the only route with three segments in its path (the others have at most two segments, e.g. `/fruits/:id`, `/fruits` etc), it can't conflict with any of the other routes in the same way that the `new` route could conflict with the `show` route.  Here's the route for editing a fruit:
+## Define the route
+
+Because this route URL has three parts, it does not conflict with others and can be placed anywhere among our other routes. 
+
+Add the following below the other routes in `server.js`:
 
 ```js
 // GET localhost:3000/fruits/:fruitId/edit
-app.get('/fruits/:fruitId/edit', async (req, res) => {
-	const foundFruit = await Fruit.findById(req.params.fruitId);
-	console.log(foundFruit);
-	res.send(`This is the edit route for ${foundFruit.name}`);
+app.get("/fruits/:fruitId/edit", async (req, res) => {
+  const foundFruit = await Fruit.findById(req.params.fruitId);
+  console.log(foundFruit);
+  res.send(`This is the edit route for ${foundFruit.name}`);
 });
 ```
 
-Nothing terribly new here.  Note the following:
+Like our show route, we'll use `Fruit.findById(req.params.fruitId)` to find the specific fruit in our database. The `req.params.fruitId` captures the `ID` from the URL.
 
-- `Fruit.findById` takes a while in computer time, so we need to `await` it.  To make this work, we need to mark the route's callback function as `async`.
-- Once, we've found the fruit, using `req.params.fruitId`, we log it and `res.send` a helpful message to the browser
+Since finding a fruit is an asynchronous operation, we use `async` before our route callback function and `await` before the `findById` method. This ensures that the server waits for the fruit to be found before moving to the next line of code.
 
-Test the route by clicking the "Edit" link on the show page of particular fruit.  Check your terminal to make sure you see the data for the fruit that you intend to edit.
+Test the route by clicking the "Edit" link on the show page of a particular fruit. Check your terminal to make sure you see the data for the fruit that you intend to edit.
 
-## Step 5: Write the view
-
-Let's modify our route so that it renders `views/fruits/edit.ejs`, passing in the `foundFruit` variable we created above:
+Lastly, let's modify our route so that it renders `views/fruits/edit.ejs`, passing in the `foundFruit` variable we created above:
 
 ```javascript
-app.get('/fruits/:fruitId/edit', async (req, res) => {
-	const foundFruit = await Fruit.findById(req.params.fruitId);
-	res.render('fruits/edit.ejs', {
-		fruit: foundFruit,
-	});
+app.get("/fruits/:fruitId/edit", async (req, res) => {
+  const foundFruit = await Fruit.findById(req.params.fruitId);
+  res.render("fruits/edit.ejs", {
+    fruit: foundFruit,
+  });
 });
 ```
 
-Just remember that the second argument to `res.render` is an object containing the data we want to be available in our EJS file.  The key of each property of the object becomes the variable name in the EJS file, so we'll have a variable called `fruit` available to us in `views/fruits/edit.ejs`.  The value of `fruit` will be `foundFruit`, which is the data that comes back to us when we search for the fruit with the `_id` that matches `req.params.fruitId`.
+Test the route to see an error- time to create the edit page!
 
-Next, create the view file:
+## Create the `edit` template
+
+Now that the route is set up, let's create the template. Create a `edit.ejs` template inside the `views/fruits`:
 
 ```bash
 touch views/fruits/edit.ejs
 ```
 
-Then let's copy over the code from `views/fruits/new.ejs` into `views/fruits/edit.ejs`.
+For our Edit page, we'll need a form for editing fruit data. We can borrow the same form from our `new.ejs` page and make some adjustments:
 
 ```html
 <body>
-  <h1>Create a New Fruit!</h1>
+  <!-- update the header -->
+  <h1>Edit <%= fruit.name %></h1>
   <form action="/fruits" method="POST">
-    <label>
-      Name:
-      <input type="text" name="name">
-    </label>
-    <label>
-      Ready to Eat?
-      <input type="checkbox" name="isReadyToEat">
-    </label>
-    <button type="submit">Add fruit</button>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" />
+
+    <label for="isReadyToEat">Ready to Eat?</label>
+    <input type="checkbox" name="isReadyToEat" id="isReadyToEat" />
+    <!-- update the button text -->
+    <button type="submit">Update Fruit</button>
   </form>
-  <a href="/fruits">Back to fruits index</a>
+  <a href="/fruits">Back to Fruits</a>
 </body>
 ```
 
-Refresh the edit page to see the changes.
-
-Next, let's update the `<h1>` so it's more accurate:
+Now let's edit the `<form>` tag:
 
 ```html
-<h1>Edit the <%= fruit.name %></h1>
+<form action="/fruits/<%=fruit._id%>?_method=PUT" method="POST"></form>
 ```
 
-Remember that `fruit` is the data being injected into the EJS file from the Edit route in `server.js`.
+The Edit form needs to make a `PUT` request to `/fruits/:fruitID` in the same way that the New form needs to make a `POST` request to `/fruits`. 
 
-Refresh again and check that the name is being displayed properly.  Now let's edit the `<form>` tag:
+Remember, that browsers don't support `PUT` requests, so we will use the same `method-override` middleware as we did with the delete route. We'll append `?_method=PUT` to the end of our action URL:
 
 ```html
+<!-- updated form -->
+
 <form action="/fruits/<%=fruit._id%>?_method=PUT" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" />
+
+  <label for="isReadyToEat">Ready to Eat?</label>
+  <input type="checkbox" name="isReadyToEat" id="isReadyToEat" />
+
+  <button type="submit">Update Fruit</button>
+</form>
 ```
 
-Go back and review the table at the beginning of this lesson.  The Edit form needs to make a `PUT` request to `/fruits/:fruitID` in the same way that the New form needs to make a `POST` request to `/fruits`.  Remember that browsers don't support `PUT` requests, but luckily we already installed `method-override` when we did Delete, so we can fake it just like we did back then.  This `<form>` tag is very similar to our Delete form, except that we're using `?_method=PUT` instead of `?_method=DELETE`.
 
-The rest of the form is currently the same as the New form:
+## Prefill form data
+
+To improve user experience in our fruit editing form, we'll prefill the form with the current data of the fruit being edited. This makes it easier for users to see and modify the existing information. 
+
+Here's how we can achieve this for both text input and checkboxes:
+
+For the 'name' input field, we'll use the `value` attribute to prepopulate it with the fruit's name:
 
 ```html
-<label>
-	Name:
-	<input type="text" name="name">
-</label>
-<label>
-	Ready to Eat?
-	<input type="checkbox" name="isReadyToEat">
-</label>
-<button type="submit">Add fruit</button>
+<input type="text" name="name" value="<%= fruit.name %>" />
 ```
 
-Technically, we could leave it like this, but I think it would be a nice User Experience if the form came pre-populated with the data of the fruit currently being edited.  For the Name input, we can use the `<input>` tag's `value` attribute like so to populate it:
+When the edit page loads, this input field will automatically display the name of the fruit being edited.
+
+Checkboxes work differently. The checkbox for `isReadyToEat` will be checked based on whether the fruit is ready to eat or not. A checkbox input can have a `checked` attribute, which, if present, makes the checkbox checked by default.
+
+Unchecked by default:
+```html
+<input type="checkbox" name="isReadyToEat" />
+```
+
+Checked by default:
+```html
+<input type="checkbox" name="isReadyToEat" checked />
+```
+
+To conditionally render the checked attribute based on the `fruit.isReadyToEat` value, we'll use EJS control flow logic in the checkbox input:
 
 ```html
-<input type="text" name="name" value="<%= fruit.name %>">
+<input type="checkbox" name="isReadyToEat" <% if (fruit.isReadyToEat) { %>checked<% } %> >
 ```
 
-Refresh, and the name of the fruit being edited should show up in the appropriate input field.
+This setup ensures that the checkbox reflects the current state of the fruit. If `fruit.isReadyToEat` is true, the checked attribute is added, and the checkbox will be checked when the page loads. Otherwise, it remains unchecked.
 
-The checkbox is a little more difficult, but it's a good lesson.  Each type of input will require its own particular way of being pre-populated.  Rather than memorize a way to pre-populate each input type, instead focus on using basic JS logic along with a little bit of research into the various attributes that each input type can have.  Input types are always being added, and you never know which ones you'll use in advance.  Don't memorize: think!
+Test your `edit` UI on fruits that are both "ready to eat" and "not ready to eat". Create some extra fruits if necessary so you have both kinds.
 
-When it comes to a `checkbox` input, a little research will reveal that it can have the attribute `checked` set on it without any value.  This will make the checkbox checked when the page loads.
+Testing the form submission will result in an error, `Cannot PUT /fruits/<fruitID>`. 
 
-Unchecked:
-
-```html
-<input type="checkbox" name="isReadyToEat">
-```
-
-Checked:
-
-```html
-<input type="checkbox" name="isReadyToEat" checked>
-```
-
-Update your checkbox code by adding the `checked` attribute and refresh.  The checkbox should be checked when the page loads.
-
-We're almost there, but we want the checkbox to be checked only when `fruit.isReadyToEat` is true.  Let's reformat our HTML in preparation:
-
-```html
-<input
-	type="checkbox"
-	name="isReadyToEat"
-	checked
->
-```
-
-It might seem odd to have each attribute on its own line, but this is a perfectly good way to make your code more readable as more and more attributes are added to your tags.
-
-Now let's add an `if` statement that will conditionally render the `checked` attribute if `fruit.isReadyToEat` is true:
-
-```html
-<input
-	type="checkbox"
-	name="isReadyToEat"
-	<% if (fruit.isReadyToEat) { %>
-		checked 
-	<% } %>
->
-```
-
-That's it!  Test your Edit route on fruits that are both "ready to eat" and "not ready to eat".  Create some extra fruit if necessary so you have both kinds.
-
-Lastly, let's change the submit button so it has some more accurate text:
-
-```html
-<button type="submit">Update fruit</button>
-```
-
-You can of course test that your form submits properly, but you should get page that says `Cannot PUT /fruits/<fruitID>`.  We'll fix that in the next section.
-
-[tktk Starter Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-edit-fruit-page-start)
-
-[tktk Complete Code](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution/tree/build-the-edit-fruit-page-complete)
-
+We'll fix that in the next section.

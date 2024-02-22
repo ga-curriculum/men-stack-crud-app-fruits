@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits](../assets/tktk-hero.png)
+# ![MEN Stack CRUD App - Fruits](../assets/tktk-hero.png)
 
 ## About
 
@@ -6,8 +6,8 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 
 ## Content
 
-| Lesson | Skills |
-| ------ | ------ |
+| Lesson                                                                                | Skills              |
+| ------------------------------------------------------------------------------------- | ------------------- |
 | [Setup](../setup/README.md)                                                           | tktk skills covered |
 | [Build and Run `server.js`](../build-and-run-serverjs/README.md)                      | tktk skills covered |
 | [Build a Landing Page](../build-a-landing-page/README.md)                             | tktk skills covered |
@@ -23,7 +23,7 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 | [Build the Edit Fruit Page](../build-the-edit-fruit-page/README.md)                   | tktk skills covered |
 | [Update a Fruit](../update-a-fruit/README.md)                                         | tktk skills covered |
 | [Recap](../recap/README.md)                                                           | tktk skills covered |
-| **Total content**                                                                    |                     |
+| **Total content**                                                                     |                     |
 
 ## References
 

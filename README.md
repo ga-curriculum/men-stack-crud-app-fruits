@@ -1,4 +1,4 @@
-# ![Building a CRUD App with Mongoose, Express, and EJS - Fruits](./assets/tktk-hero.png)
+# ![MEN Stack CRUD App - Fruits](./assets/tktk-hero.png)
 
 ## About
 
@@ -12,32 +12,29 @@ This is a single model CRUD application utilizing Mongoose, Express, and EJS.
 
 ## Content
 
-| Lesson | Video Time | Video | Skills |
-| ------ |:----------:|:-----:| ------ |
-| [Setup](./setup/README.md)                                                           | -- | -- | Setting up the development environment |
-| [Build and Run `server.js`](./build-and-run-serverjs/README.md)                      | -- | -- | tktk skills covered |
-| [Build a Landing Page](./build-a-landing-page/README.md)                             | -- | -- | tktk skills covered |
-| [Use Mongoose to Connect to MongoDB](./use-mongoose-to-connect-to-mongodb/README.md) | -- | -- | tktk skills covered |
-| [Build the Fruit Model](./build-the-fruit-model/README.md)                           | -- | -- | tktk skills covered |
-| [Build the New Fruit Page](./build-the-new-fruit-page/README.md)                     | -- | -- | tktk skills covered |
-| [Create a Fruit](./create-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
-| [Build the Fruits Index Page](./build-the-fruits-index-page/README.md)               | -- | -- | tktk skills covered |
-| [Linking Pages within an App](./linking-pages-within-an-app/README.md)               | -- | -- | tktk skills covered |
-| [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 | -- | -- | tktk skills covered |
-| [Delete a Fruit](./delete-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
-| [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   | -- | -- | tktk skills covered |
-| [Update a Fruit](./update-a-fruit/README.md)                                         | -- | -- | tktk skills covered |
-| [Recap](./recap/README.md)                                                           | -- | -- | tktk skills covered |
-| **Total content**                                                                    | -- | -- |                     |
+| Lesson                                                                               | Video Time | Video | Skills                                 |
+| ------------------------------------------------------------------------------------ | :--------: | :---: | -------------------------------------- |
+| [Setup](./setup/README.md)                                                           |     --     |  --   | Setting up the development environment |
+| [Build and Run `server.js`](./build-and-run-serverjs/README.md)                      |     --     |  --   | Create a basic Express server          |
+| [Build a Landing Page](./build-a-landing-page/README.md)                             |     --     |  --   | Implement a landing page using Express and EJS  |
+| [Use Mongoose to Connect to MongoDB](./use-mongoose-to-connect-to-mongodb/README.md) |     --     |  --   | Connect to MongoDB Atlas via connection string |
+| [Build the Fruit Model](./build-the-fruit-model/README.md)                           |     --     |  --   | Define and export a Mongoose model     |
+| [Build the New Fruit Page](./build-the-new-fruit-page/README.md)                     |     --     |  --   | Construct a `new` route and view       |
+| [Create a Fruit](./create-a-fruit/README.md)                                         |     --     |  --   | Build `create` functionality in a `POST` route |
+| [Build the Fruits Index Page](./build-the-fruits-index-page/README.md)               |     --     |  --   | Find and render all fruits on an `index` page |
+| [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 |     --     |  --   | Construct a `show` route and view      |
+| [Delete a Fruit](./delete-a-fruit/README.md)                                         |     --     |  --   | Build `delete` functionality in a `DELETE` route |
+| [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   |     --     |  --   | Construct an `edit` route and view     |
+| [Update a Fruit](./update-a-fruit/README.md)                                         |     --     |  --   | Build `update` functionality in a `PUT` route |
+| [Recap](./recap/README.md)                                                           |     --     |  --   | Review technologies used and application architecture |
+| **Total content**                                                                    |     --     |  --   |                                        |
 
 ## Level Up content
 
-| Lesson | Video Time | Video | Skills |
-| ------ |:----------:|:-----:| ------ |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-01.md) | -- | -- | tktk skills covered |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-02.md) | -- | -- | tktk skills covered |
-| [tktk Level Up Microlesson Name](./level-up/tktk-microlesson-03.md) | -- | -- | tktk skills covered |
-| **Total Level Up content**                                          | -- | -- |                     |
+| Lesson                                                              | Video Time | Video | Skills              |
+| ------------------------------------------------------------------- | :--------: | :---: | ------------------- |
+| [Style the Application](./style-the-application/README.md)          |     --     |  --   | Bring your app to life with CSS |
+| **Total Level Up content**                                          |     --     |  --   |                     |
 
 ## References
 
