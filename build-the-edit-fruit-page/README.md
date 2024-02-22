@@ -17,7 +17,7 @@ We'll just be dealing with the `Edit` route for this section, but it's good to k
 
 ## Step 2: Create the UI that will issue the request to that route
 
-Add a link just after the delete form and before the "Back to fruits index" link on the show page. Adjust the following code to our `views/fruits/show.ejs` page:
+Add a link just after the delete form and before the "Back to Fruits" link on the show page. Adjust the following code to our `views/fruits/show.ejs` page:
 
 ```html
 <form action="/fruits/<%=fruit._id%>?_method=DELETE" method="POST">
@@ -25,7 +25,7 @@ Add a link just after the delete form and before the "Back to fruits index" link
 </form>
 <!-- add edit page link here -->
 <a href="/fruits/<%= fruit._id %>/edit">Edit <%= fruit.name %></a>
-<a href="/fruits">Back to fruits index</a>
+<a href="/fruits">Back to Fruits</a>
 ```
 
 Nothing really of note here. Just remember that we're dynamically inserting the fruit's `_id` property into the `href` attribute of the `<a>` tag by using `<%= fruit._id %>`
@@ -87,7 +87,7 @@ Then let's copy over the code from `views/fruits/new.ejs` into `views/fruits/edi
     </label>
     <button type="submit">Add fruit</button>
   </form>
-  <a href="/fruits">Back to fruits index</a>
+  <a href="/fruits">Back to Fruits</a>
 </body>
 ```
 

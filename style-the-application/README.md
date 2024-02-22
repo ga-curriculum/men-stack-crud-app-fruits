@@ -230,7 +230,7 @@ button:active {
 <body>
   <div class="fruit-details">...</div>
   <a class="fruits-index-link" href="/fruits">
-    <div class="index-link-text">BACK TO FRUITS</div>
+    <div class="index-link-text">Back to Fruits</div>
   </a>
 </body>
 ```
