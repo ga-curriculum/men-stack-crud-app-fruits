@@ -105,7 +105,7 @@ Inside this template file, add the following HTML boilerplate:
 
 Now if we refresh the browser at [localhost:3000/fruits](http://localhost:3000/fruits) that should resolve our error and render the `<h1>`.
 
-![Index Temporary View -tktk Hunter screen shot treatment needed](./assets/index-temp-view.png)
+![Index Temporary View - tktk Hunter screen shot treatment needed](./assets/index-temp-view.png)
 
 In our previous step, we used `res.render()` to pass the fruits data from our database to the EJS file. By passing `{ fruits: allFruits }`, we made the `allFruits` array accessible in our EJS file as a variable named `fruits`.
 
@@ -128,6 +128,25 @@ We can list our fruits in a simple, bulleted list format using an unordered list
 
 Another refresh at [localhost:3000/fruits](http://localhost:3000/fruits) and we should see our list!
 
-![Fruits List](./assets/fruits-list.png)
+![Fruits List - tktk Hunter screen shot treatment needed ](./assets/fruits-list.png)
 
 Congrats! You have just completed your second piece of CRUD functionality, Read!
+
+## Update 'create' route redirect
+
+Now that we have an `index` page displaying all our fruits, it's a good idea to update our `create` route. Instead of redirecting users back to the form after adding a new fruit, we can redirect them to the `index` page. This is a better user experience because they can immediately see the result of adding a new fruit to the database. 
+
+```javascript
+// server.js
+
+// POST /fruits
+app.post("/fruits", async (req, res) => {
+  if (req.body.isReadyToEat === "on") {
+    req.body.isReadyToEat = true;
+  } else {
+    req.body.isReadyToEat = false;
+  }
+  await Fruit.create(req.body);
+  res.redirect("/fruits"); // redirect to index fruits
+});
+```
