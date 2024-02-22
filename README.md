@@ -4,6 +4,8 @@
 
 Welcome to the "Fruits" App, a comprehensive module for intermediate learners ready to build a full-stack CRUD application. This module covers essential full-stack development skills, focusing on creating, reading, updating, and deleting data in a web application using Node.js, Express, and EJS. It's the perfect next step for those with foundational web development knowledge, who are ready to work with a database for the first time.
 
+![Fruits App HomePage - tktk screen shot treatment needed](./assets/homepage.png)
+
 ## Prerequisites
 
 - Intro to Express
