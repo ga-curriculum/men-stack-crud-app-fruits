@@ -20,7 +20,7 @@ Here is our current `index` page code:
 <!-- views/fruits/index.ejs -->
 
 <body>
-  <h1>Here Are All the Fruits</h1>
+  <h1>All Fruits</h1>
 <ul>
   <% fruits.forEach(fruit => { %>
     <li><%= fruit.name %></li>
@@ -37,7 +37,7 @@ Lets update the code and wrap each fruit item in a link:
 <!-- views/fruits/index.ejs -->
 
 <body>
-  <h1>Here Are All the Fruits</h1>
+  <h1>All Fruits</h1>
   <ul>
     <% fruits.forEach(fruit => { %>
       <li><a href="#"><%= fruit.name %></a></li>
@@ -58,7 +58,7 @@ Utilizing `_id` will give us the `id` that we need. Now we can make the adjustme
 <!-- views/fruits/index.ejs -->
 
 <body>
-  <h1>Here Are All the Fruits</h1>
+  <h1>All Fruits</h1>
   <ul>
     <% fruits.forEach(fruit => { %>
       <li>

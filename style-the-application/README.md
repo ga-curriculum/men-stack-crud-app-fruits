@@ -46,11 +46,13 @@ touch public/stylesheets/style.css
 1. Link the `style.css` file to all of your ejs pages by adding the following code within the `<head>` section of your pages:
 
 ```html
+<!-- all template pages -->
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  //new code below this line
+  // new code below this line
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 ```
@@ -64,6 +66,8 @@ touch public/stylesheets/style.css
 3. Add an image to the `index.ejs` page:
 
 ```html
+<!-- index.ejs homepage -->
+
 <body>
   <h1>Welcome to the Fruits app!</h1>
 
@@ -82,6 +86,8 @@ touch public/stylesheets/style.css
 4. Add a footer to the bottom of `index.ejs`, under the closing `</body>` tag (we'll use this to attribute the icon we're using for this app):
 
 ```html
+<!-- index.ejs homepage -->
+
 </body>
 // new code below this line
 <footer>Icons by <a href="https://www.flaticon.com/authors/freepik">Freekpik</a></footer>
@@ -125,14 +131,18 @@ footer {
 1. Modify the `<a>` tag on `index.ejs` to include a class called `fruits-index-link`:
 
 ```html
-<a class="fruits-index-link" href="/fruits"></a>
+<!-- index.ejs fruits -->
+
+<a class="fruits-index-link" href="/fruits">Browse Fruits</a>
 ```
 
 2. Wrap the text of that same `<a>` tag in a `<div>` with the class name of `index-link-text`. Do this for all links in the app that say "Back to Fruits" (on the `fruits/edit.ejs` and `fruits/show.ejs` pages):
 
 ```html
+<!-- edit.ejs / show.ejs -->
+
 <a class="fruits-index-link" href="/fruits">
-  <div class="index-link-text">Browse Fruits</div>
+  <div class="index-link-text">Back to Fruits</div>
 </a>
 ```
 
@@ -171,6 +181,8 @@ footer {
 1. On `new.ejs` and `edit.ejs`, add a `<div>` around the `<label>` and `<input>` for `ready to eat`, and apply the class `checkbox-div`:
 
 ```html
+<!-- new.ejs / edit.ejs -->
+
 <div class="checkbox-div">
   <label for="ready-to-eat">Ready to Eat?</label>
   <input type="checkbox" name="isReadyToEat" id="ready-to-eat" />
@@ -227,8 +239,12 @@ button:active {
 1. On `show.ejs` add a `<div>` around the content, buttons, and links, and apply the class `fruit-details`:
 
 ```html
+<!-- show.ejs -->
+
 <body>
-  <div class="fruit-details">...</div>
+  <div class="fruit-details">
+    <!-- show page content -->
+  </div>
   <a class="fruits-index-link" href="/fruits">
     <div class="index-link-text">Back to Fruits</div>
   </a>
@@ -329,9 +345,11 @@ button:active {
 1. Modify the HTML structure on `fruits/index.ejs` to create a header `<div>` and wrap the fruit names in cards:
 
 ```html
+<!-- index.ejs -->
+
 <body>
   <div class="index-header-div">
-    <h1>Here Are All the Fruits</h1>
+    <h1>All Fruits</h1>
     <a class="add-fruit" href="/fruits/new">Add fruit</a>
   </div>
   <ul>

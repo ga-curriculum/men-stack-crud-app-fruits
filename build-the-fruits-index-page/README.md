@@ -98,7 +98,7 @@ Inside this template file, add the following HTML boilerplate:
     <title>Fruits Index</title>
   </head>
   <body>
-    <h1>Here Are All the Fruits</h1>
+    <h1>All Fruits</h1>
   </body>
 </html>
 ```
@@ -116,7 +116,7 @@ We can list our fruits in a simple, bulleted list format using an unordered list
 <!-- views/fruits/index.ejs -->
 
 <body>
-  <h1>Here Are All the Fruits</h1>
+  <h1>All Fruits</h1>
   <ul>
     <% fruits.forEach(fruit => { %>
       <li><%= fruit.name %></li>

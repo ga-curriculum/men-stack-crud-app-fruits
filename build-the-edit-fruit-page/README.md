@@ -83,7 +83,7 @@ For our Edit page, we'll need a form for editing fruit data. We can borrow the s
 ```html
 <body>
   <!-- update the header -->
-  <h1>Edit the <%= fruit.name %></h1>
+  <h1>Edit <%= fruit.name %></h1>
   <form action="/fruits" method="POST">
     <label for="name">Name:</label>
     <input type="text" name="name" id="name" />
