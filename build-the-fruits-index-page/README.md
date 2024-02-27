@@ -159,6 +159,7 @@ First, we'll add a link on the homepage of our application that users can click 
 Add the following HTML snippet to the application homepage:
 
 ```html
+<!-- views/index.ejs -->
 <a href="/fruits">Browse Fruits</a>
 ```
 
@@ -167,6 +168,7 @@ Next, let's add a link on the `index` page of our application. This link will be
 Add the following HTML snippet to the fruit `index` page:
 
 ```html
+<!-- views/fruits/index.ejs -->
 <a href="/fruits/new">Add New Fruit</a>
 ```
 
@@ -175,5 +177,6 @@ Once on the `new` page, we should probably give users an easy way back to index.
 Add the following to the fruit `new` page:
 
 ```html
+<!-- views/fruits/new.ejs -->
 <a href="/fruits/">Back to Fruits</a>
 ```
