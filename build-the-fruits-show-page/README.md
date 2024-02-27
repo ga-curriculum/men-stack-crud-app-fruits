@@ -127,7 +127,7 @@ app.get("/fruits/:fruitId", async (req, res) => {
 In the above code, `req.params.fruitId` captures the ID from the URL, and we use it to find the specific fruit. We've also made the function `async` so that we can `await` the asynchronous database operation.
 
 
-## Rendering the Fruit Details
+## Rendering the Fruit details
 
 After fetching the fruit, we'll update from `res.send()` to `res.render()` to display the show page template. We'll also pass the retrieved `fruit` data to the template:
 
