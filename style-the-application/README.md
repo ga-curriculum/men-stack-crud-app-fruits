@@ -1,4 +1,4 @@
-# ![MEN Stack CRUD App - Fruits - Level Up - Adding Style](./assets/hero.png)
+# ![MEN Stack CRUD App - Fruits - Level Up - Style the Application](./assets/hero.png)
 
 **Learning objective** : By the end of this lesson, students will be able to enhance the user experience of their full-stack applications by effectively integrating CSS styling through the use of static files.
 
