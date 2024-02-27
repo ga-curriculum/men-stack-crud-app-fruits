@@ -210,7 +210,7 @@ With this code, our application checks the `isReadyToEat` property of the fruit.
 
 ![Fruit with details](./assets/ready-to-eat.png)
 
-## Link `show` page Back to Fruits `index`
+## Link `show` page back to Fruits `index`
 
 Now that we've viewed a specific fruit, let's say we want to look at the details of another fruit. We'll need to navigate back to the `index` page.
 
