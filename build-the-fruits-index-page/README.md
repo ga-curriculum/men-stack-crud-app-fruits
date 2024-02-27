@@ -48,7 +48,7 @@ app.get("/fruits", async (req, res) => {
 
 Now when we navigate to [localhost:3000/fruits](http://localhost:3000/fruits) we should see an array of our fruit data logged to our terminal.
 
-![Fruits Data Array - tktk Hunter screen shot treatment please](./assets/data-array.png)
+![Fruits Data Array](./assets/data-array.png)
 
 ## Update the route
 
@@ -73,7 +73,7 @@ app.get("/fruits", async (req, res) => {
 
 Now if we navigate to [localhost:3000/fruits](http://localhost:3000/fruits) we'll see... an error!
 
-![Error No View- tktk Hunter screen shot treatment needed](./assets/error-view.png)
+![Error No View](./assets/error-view.png)
 
 However, this error is actually quite helpful. It points us toward our next step. The message indicates a specific issue: we're attempting to render a view called `index.ejs` located in the `views/fruits` directory, but this file does not currently exist. Let's fix that! 
 
@@ -105,12 +105,9 @@ Inside this template file, add the following HTML boilerplate:
 
 Now if we refresh the browser at [localhost:3000/fruits](http://localhost:3000/fruits) that should resolve our error and render the `<h1>`.
 
-![Index Temporary View - tktk Hunter screen shot treatment needed](./assets/index-temp-view.png)
-
 In our previous step, we used `res.render()` to pass the fruits data from our database to the EJS file. By passing `{ fruits: allFruits }`, we made the `allFruits` array accessible in our EJS file as a variable named `fruits`.
 
 We can list our fruits in a simple, bulleted list format using an unordered list `<ul>`. This is done by looping over the fruits array and dynamically generating an `<li>` for each fruit's name: 
-
 
 ```html
 <!-- views/fruits/index.ejs -->
@@ -128,7 +125,7 @@ We can list our fruits in a simple, bulleted list format using an unordered list
 
 Another refresh at [localhost:3000/fruits](http://localhost:3000/fruits) and we should see our list!
 
-![Fruits List - tktk Hunter screen shot treatment needed ](./assets/fruits-list.png)
+![Fruits List](./assets/fruit-list.png)
 
 Congrats! You have just completed your second piece of CRUD functionality, Read!
 
@@ -151,12 +148,33 @@ app.post("/fruits", async (req, res) => {
 });
 ```
 
-## Link to Index Page
+## Adding links
 
-Now that our index page is up and running, it's time to make it easily accessible. We'll add a link on the homepage of our application that users can click to visit the index page. This link will be labeled "Browse Fruits" and will direct users to the index page where they can view all the fruits listed.
+Now that our index page is up and running, it's time to make some of our pages more accessible. 
+
+First, we'll add a link on the homepage of our application that users can click to visit the index page. This link will be labeled "Browse Fruits" and will direct users to the index page where they can view all the fruits listed.
 
 Add the following HTML snippet to the application homepage:
 
 ```html
+<!-- views/index.ejs -->
 <a href="/fruits">Browse Fruits</a>
+```
+
+Next, let's add a link on the `index` page of our application. This link will be labeled "Add Fruit" and will direct users to the `new` page where they can input details for a new fruit.
+
+Add the following HTML snippet to the fruit `index` page:
+
+```html
+<!-- views/fruits/index.ejs -->
+<a href="/fruits/new">Add New Fruit</a>
+```
+
+Once on the `new` page, we should probably give users an easy way back to index.
+
+Add the following to the fruit `new` page:
+
+```html
+<!-- views/fruits/new.ejs -->
+<a href="/fruits/">Back to Fruits</a>
 ```

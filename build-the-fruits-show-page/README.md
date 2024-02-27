@@ -50,7 +50,7 @@ Lets update the code and wrap each fruit item in a link:
 
 As we iterate through the fruit objects, we already access their names using `fruit.name`. We can do the same for its `id`. Looking back at when we logged our data to the console, we saw:
 
-![Data with id- tktk Hunter - screen shot treatment plz](./assets/data-array.png)
+![Data with id](./assets/data-array.png)
 
 Utilizing `_id` will give us the `id` that we need. Now we can make the adjustment to the `<a>` tag and add a dynamic `href`.
 
@@ -167,8 +167,6 @@ Add the following HTML boilerplate to `show.ejs`:
 
 Refresh your browser to see a rendered page.
 
-![Generic Fruit Show Page - tktk Hunter screen shot treatment plz](./assets/generic-fruit-show.png)
-
 Let's enhance our application to show detailed information about each fruit. We'll achieve this by dynamically updating our HTML template using the `fruit` data we've passed.
 
 ```html
@@ -188,9 +186,7 @@ Let's enhance our application to show detailed information about each fruit. We'
 </html>
 ```
 
-Refresh or click on a specific fruit on our `index` page, and our `show` page should be more specific:
-
-![Specific Fruit Show Page](./assets/specific-fruit-show.png)
+Refresh or click on a specific fruit on our `index` page, and our `show` page should be more specific.
 
 To enhance our fruit details page, we'll incorporate conditional rendering based on the fruit's `isReadyToEat` property. This will display different messages depending on whether the fruit is ready to eat or not.
 
@@ -200,7 +196,7 @@ We'll use EJS control flow to dynamically display a message about the fruit's re
 <<!-- views/fruits/show.ejs -->
 
 <body>
-  <h1>Details about <%= fruit.name %></h1>
+  <h1><%= fruit.name %></h1>
   <!-- Conditional rendering based on fruit's readiness -->
   <% if (fruit.isReadyToEat) { %>
     <p>This fruit is ready to eat!</p>
@@ -212,7 +208,7 @@ We'll use EJS control flow to dynamically display a message about the fruit's re
 
 With this code, our application checks the `isReadyToEat` property of the fruit. If it's true, it displays "This fruit is ready to eat!" Otherwise, it shows "This fruit is not ready to eat!"
 
-![Fruit with details - tktk Hunter screen shot treatment plz](./assets/ready-to-eat.png)
+![Fruit with details](./assets/ready-to-eat.png)
 
 ## Link `show` page Back to Fruits `index`
 

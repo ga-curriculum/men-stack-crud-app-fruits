@@ -95,23 +95,3 @@ Finally, let's add a form to our `new.ejs` template. This form will allow users 
 In the form we've just created, there are two important attributes: `action` and `method`. The `action` attribute specifies the URL where the form data should be sent when the form is submitted. In our case, it's set to `/fruits`. The `method` attribute defines the HTTP `method` the browser should use to send the form data. We've set this to `POST`, which is appropriate for creating new data on the server.
 
 Now that our form is set up, it provides the user interface needed to create a new fruit. However, it's not functional yet. When you try to submit the form, you'll probably see an error message like `Cannot POST /fruits`. This is because we haven't yet created the route to handle the form submission. That's our next step! We'll set up the corresponding server-side route to process and save the form data.
-
-## Links to `new` Page
-
-Now that we have a functional `new` page where users can add new fruits, it's important to provide easy access to this page. Let's add a link on the `index` page of our application. This link will be labeled "Add Fruit" and will direct users to the `new` page where they can input details for a new fruit.
-
-Add the following HTML snippet to the fruit `index` page:
-
-```html
-<a href="/fruits/new">Add New Fruit</a>
-```
-
-Once on the `new` page, we should probably give users an easy way back to index.
-
-Add the following to the fruit `new` page:
-
-```html
-<a href="/fruits/">Back to Fruits</a>
-```
-
-

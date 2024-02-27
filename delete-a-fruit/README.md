@@ -48,7 +48,7 @@ Now we need to adjust our fruits `show` page to include a button for deleting a 
 Update `show.ejs` with the following:
 
 ```html
-<h1>Here Are the Details about <%= fruit.name %></h1>
+<h1><%= fruit.name %></h1>
 <% if(fruit.isReadyToEat){ %>
 <p>This fruit is ready to eat!</p>
 <% } else { %>
