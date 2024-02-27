@@ -105,8 +105,6 @@ Inside this template file, add the following HTML boilerplate:
 
 Now if we refresh the browser at [localhost:3000/fruits](http://localhost:3000/fruits) that should resolve our error and render the `<h1>`.
 
-![Index Temporary View - tktk Hunter screen shot treatment needed](./assets/index-temp-view.png)
-
 In our previous step, we used `res.render()` to pass the fruits data from our database to the EJS file. By passing `{ fruits: allFruits }`, we made the `allFruits` array accessible in our EJS file as a variable named `fruits`.
 
 We can list our fruits in a simple, bulleted list format using an unordered list `<ul>`. This is done by looping over the fruits array and dynamically generating an `<li>` for each fruit's name: 
@@ -127,7 +125,7 @@ We can list our fruits in a simple, bulleted list format using an unordered list
 
 Another refresh at [localhost:3000/fruits](http://localhost:3000/fruits) and we should see our list!
 
-![Fruits List - tktk Hunter screen shot treatment needed ](./assets/fruits-list.png)
+![Fruits List](./assets/fruit-list.png)
 
 Congrats! You have just completed your second piece of CRUD functionality, Read!
 

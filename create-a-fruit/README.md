@@ -59,10 +59,10 @@ Finally, we redirect the user back to the form page using `res.redirect("/fruits
 
 Let's verify our data was saved by navigating to our MongoDB Atlas dashboard. Once in the dashboard, click on the "Collections" section for your database.
 
-![tktk Hunter- need updated screen shot of collections](./assets/originals/collections.png)
+![MongoDB Atlas collections](./assets/collections.png)
 
 You should see a collection called "fruits". Click on that collection and see if you can find the document of your newly created fruit.
 
-![tktk Hunter- need updated screen shot of fruit](./assets/originals/banana.png)
+![MongoDB Atlas query results](./assets/banana.png)
 
 If you can see your newly created fruit, you have successfully performed your first CRUD operation, **Create**. Congrats!

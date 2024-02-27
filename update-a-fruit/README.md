@@ -18,7 +18,6 @@ The `update` route is unique as it specifically deals with `PUT` requests. Since
 
 In this route, we will employ the Mongoose `findByIdAndUpdate()` method. This method allows us to update a specific document in the MongoDB database based on its unique `ID`. Since this is an asynchronous operation, we'll utilize `async/await` to ensure the operation completes before proceeding.
 
-
 Let's add the following in `server.js`:
 
 ```js
@@ -48,4 +47,3 @@ We can now test the route by submitting our form. Make sure you are redirected c
 If you can see your newly updated fruit, you have successfully performed your final CRUD operation, **Update**. Congrats!
 
 With this final route we have full CRUD and all seven RESTful routes on the fruit model! Well done! 🎉
-
