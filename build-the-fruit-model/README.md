@@ -8,7 +8,7 @@ As we progress with our application, the next essential step is to create a sche
 
 ## Create the model file `fruit.js`
 
-Let's create a directory that will hold the file for our fruit model `fruits.js`:
+Let's create a directory that will hold the file for our fruit model `fruit.js`:
 
 ```bash
 mkdir models
