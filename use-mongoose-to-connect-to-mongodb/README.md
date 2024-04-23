@@ -30,7 +30,7 @@ touch .gitignore
 
 In that file, add the following:
 
-```plain
+```plaintext
 .env
 node_modules
 ```
@@ -43,7 +43,7 @@ Now that we're certain Git won't track it, let's edit our `.env` file.
 
 For example:
 
-```plain
+```plaintext
 SECRET_NUMBER=13
 PASSWORD=12345
 ```
@@ -56,7 +56,7 @@ You can now paste your MongoDB Atlas connection string into your app's `.env` fi
 
 For example:
 
-```plain
+```plaintext
 MONGODB_URI=mongodb+srv://<username>:<password>@sei.azure.mongodb.net/?retryWrites=true
 ```
 
@@ -72,7 +72,7 @@ Your connection string will default to a generic unnamed database collection as 
 
 Here's how that will look for this app: `/fruits?`. The full connection string for this app will read like this:
 
-```plain
+```plaintext
 MONGODB_URI=mongodb+srv://<username>:<password>@sei.azure.mongodb.net/fruits?retryWrites=true
 ```
 
