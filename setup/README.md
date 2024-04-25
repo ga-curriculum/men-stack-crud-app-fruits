@@ -13,10 +13,10 @@ Make a new repository on [GitHub](https://github.com/) named `men-stack-crud-app
 Clone a copy of your remote repo locally by using the `git clone` command:
 
 ```bash
-git clone https://git.generalassemb.ly/<your-username>/men-stack-crud-app-fruits.git
+git clone https://github.com/<your-username>/men-stack-crud-app-fruits.git
 ```
 
-> 🚨 Do not copy the above command. It will not work. Your GitHub username will replace <github-username> (including the < and >) in the URL above.
+> 🚨 Do not copy the above command. It will not work. Your GitHub username will replace `<github-username>` (including the `<` and `>`) in the URL above.
 
 Next, `cd` into your new cloned directory, `men-stack-crud-app-fruits`:
 
@@ -40,7 +40,7 @@ During initialization, you will be prompted to customize your project and the `p
 
 At this point, accept the defaults (by just hitting `Return`/`Enter` for each prompt without adding any values).
 
-Open the project's folder in VS Code:
+Open the project directory in VS Code:
 
 ```bash
 code .
