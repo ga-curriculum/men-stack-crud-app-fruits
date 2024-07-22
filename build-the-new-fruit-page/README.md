@@ -65,7 +65,7 @@ Instead of `res.send`, let's render the `new.ejs` template we just created in th
 
 // GET /fruits/new
 app.get("/fruits/new", (req, res) => {
-  res.render("/fruits/new.ejs");
+  res.render("fruits/new.ejs");
 });
 ```
 
