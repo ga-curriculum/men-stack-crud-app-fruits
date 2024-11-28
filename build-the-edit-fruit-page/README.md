@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Build the Edit Fruit Page](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Build the Edit Fruit Page</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will understand how to build and utilize the `edit` route in an Express application, enabling users to modify existing data in a database.
 

@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Update a Fruit](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Update a Fruit</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create a route that will receive the submission of the form in `/fruits/edit`. This route will update a fruit document in the `fruits` collection in their MongoDB Atlas database.
 

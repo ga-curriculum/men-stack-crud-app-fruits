@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Create a Fruit](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Create a Fruit</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create a route that will receive the submission of the form in `/fruits/new`. This route will create a fruit document in the `fruits` collection in their MongoDB Atlas database.
 

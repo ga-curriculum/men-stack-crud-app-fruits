@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits](./assets/hero.png)
+<h1>
+  <span class="prefix">MEN Stack CRUD App</span>
+  <span class="headline">Fruits</span>
+</h1>
 
 ## About
 
@@ -6,55 +9,55 @@ Welcome to the "Fruits" App, a comprehensive module for intermediate learners re
 
 ![Fruits App HomePage](./assets/homepage.png)
 
-## Prerequisites
+## Content
+
+| Lesson                                                                               | Skills                                                |
+| ------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| [Setup](./setup/README.md)                                                           | Setting up the development environment                |
+| [Build and Run `server.js`](./build-and-run-serverjs/README.md)                      | Create a basic Express server                         |
+| [Build a Landing Page](./build-a-landing-page/README.md)                             | Implement a landing page using Express and EJS        |
+| [Use Mongoose to Connect to MongoDB](./use-mongoose-to-connect-to-mongodb/README.md) | Connect to MongoDB Atlas via connection string        |
+| [Build the Fruit Model](./build-the-fruit-model/README.md)                           | Define and export a Mongoose model                    |
+| [Build the New Fruit Page](./build-the-new-fruit-page/README.md)                     | Construct a `new` route and view                      |
+| [Create a Fruit](./create-a-fruit/README.md)                                         | Build `create` functionality in a `POST` route        |
+| [Build the Fruits Index Page](./build-the-fruits-index-page/README.md)               | Find and render all fruits on an `index` page         |
+| [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 | Construct a `show` route and view                     |
+| [Delete a Fruit](./delete-a-fruit/README.md)                                         | Build `delete` functionality in a `DELETE` route      |
+| [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   | Construct an `edit` route and view                    |
+| [Update a Fruit](./update-a-fruit/README.md)                                         | Build `update` functionality in a `PUT` route         |
+| [Recap](./recap/README.md)                                                           | Review technologies used and application architecture |
+| [Style the Application](./style-the-application/README.md)                           | Bring your app to life with CSS                       |
+
+## References
+
+📖 [Reference Materials](./references/README.md)
+
+## Internal
+
+### Prerequisites
 
 - Intro to Express
 - RESTful Routing
 - EJS
 - Intro to Mongoose
 
-## Content
+### Solution code
 
-| Lesson                                                                               | Video Time | Video | Skills                                 |
-| ------------------------------------------------------------------------------------ | :--------: | :---: | -------------------------------------- |
-| [Setup](./setup/README.md)                                                           |     --     |  --   | Setting up the development environment |
-| [Build and Run `server.js`](./build-and-run-serverjs/README.md)                      |     --     |  --   | Create a basic Express server          |
-| [Build a Landing Page](./build-a-landing-page/README.md)                             |     --     |  --   | Implement a landing page using Express and EJS  |
-| [Use Mongoose to Connect to MongoDB](./use-mongoose-to-connect-to-mongodb/README.md) |     --     |  --   | Connect to MongoDB Atlas via connection string |
-| [Build the Fruit Model](./build-the-fruit-model/README.md)                           |     --     |  --   | Define and export a Mongoose model     |
-| [Build the New Fruit Page](./build-the-new-fruit-page/README.md)                     |     --     |  --   | Construct a `new` route and view       |
-| [Create a Fruit](./create-a-fruit/README.md)                                         |     --     |  --   | Build `create` functionality in a `POST` route |
-| [Build the Fruits Index Page](./build-the-fruits-index-page/README.md)               |     --     |  --   | Find and render all fruits on an `index` page |
-| [Build the Fruits Show Page](./build-the-fruits-show-page/README.md)                 |     --     |  --   | Construct a `show` route and view      |
-| [Delete a Fruit](./delete-a-fruit/README.md)                                         |     --     |  --   | Build `delete` functionality in a `DELETE` route |
-| [Build the Edit Fruit Page](./build-the-edit-fruit-page/README.md)                   |     --     |  --   | Construct an `edit` route and view     |
-| [Update a Fruit](./update-a-fruit/README.md)                                         |     --     |  --   | Build `update` functionality in a `PUT` route |
-| [Recap](./recap/README.md)                                                           |     --     |  --   | Review technologies used and application architecture |
-| **Total content**                                                                    |     --     |  --   |                                        |
+🏁 [Solution code](https://git.generalassemb.ly/modular-curriculum-all-courses/men-stack-crud-app-fruits-solution)
 
-## Level Up content
+### Course landing pages
 
-| Lesson                                                              | Video Time | Video | Skills              |
-| ------------------------------------------------------------------- | :--------: | :---: | ------------------- |
-| [Style the Application](./style-the-application/README.md)          |     --     |  --   | Bring your app to life with CSS |
-| **Total Level Up content**                                          |     --     |  --   |                     |
+- [SEB - Software Engineering Bootcamp](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/men-stack-crud-app-fruits/canvas-landing-pages/seb.html)
+- [Fallback](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/men-stack-crud-app-fruits/canvas-landing-pages/fallback.html)
 
-## References
-
-📖 [Reference Materials](./references/README.md)
-
-## Complete code
-
-🐙 [Repository](https://git.generalassemb.ly/modular-curriculum-all-courses/building-a-crud-app-with-mongoose-express-and-ejs-fruits-solution)
-
-## Internal resources
+### Resources
 
 ✏️ [Instructor Guide](./internal-resources/instructor-guide.md)
 
-🎥 [Video Hub](./internal-resources/video-hub/README.md)
+🎥 [Video Hub](./internal-resources/video-hub.md)
 
 🏗️ [Release Notes](./internal-resources/release-notes.md)
 
 ---
 
-**Find a 👾 bug 👾 or have suggestions? [Let us know](https://git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/blob/main/module-feedback.md)!**
+**Find a 👾 bug 👾 or have suggestions? [Let us know](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/module-feedback.html)!**

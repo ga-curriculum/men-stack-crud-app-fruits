@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Recap](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Recap</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to summarize the application architecture and technologies used.
 

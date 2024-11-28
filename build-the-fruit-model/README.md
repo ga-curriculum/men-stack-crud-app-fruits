@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Build the Fruit Model](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Build the Fruit Model</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to define and export a Mongoose model.
 

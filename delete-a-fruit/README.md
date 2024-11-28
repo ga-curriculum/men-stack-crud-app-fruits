@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Delete a Fruit](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Delete a Fruit</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to implement and utilize the `delete` route in an Express application to remove items from a MongoDB database.
 

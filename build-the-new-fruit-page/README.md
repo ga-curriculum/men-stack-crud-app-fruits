@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Build the New Fruit Page](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Build the New Fruit Page</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to construct a `new` route in Express that renders a form for collecting user data.
 

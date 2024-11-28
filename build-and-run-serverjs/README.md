@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Build and Run server.js](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Build and Run <code>server.js</code></span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create a basic Express server and run it in their terminal.
 
@@ -23,12 +26,12 @@ Here is a helpful outline of what a typical Express app does - let’s put this 
 ```js
 // Here is where we import modules
 // We begin by loading Express
-const express = require("express");
+const express = require('express');
 
 const app = express();
 
 app.listen(3000, () => {
-  console.log("Listening on port 3000");
+  console.log('Listening on port 3000');
 });
 ```
 
@@ -42,4 +45,4 @@ Let's test our work by running our server. Run the following in your terminal:
 nodemon
 ```
 
-Our server should be up and running and you should see *`Listening on port 3000`* logged to your terminal.
+Our server should be up and running and you should see _`Listening on port 3000`_ logged to your terminal.

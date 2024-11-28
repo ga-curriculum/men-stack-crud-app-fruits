@@ -1,4 +1,7 @@
-# ![MEN Stack CRUD App - Fruits - Use Mongoose to Connect to MongoDB](./assets/hero.png)
+<h1>
+  <span class="headline">Fruits</span>
+  <span class="subhead">Use Mongoose to Connect to Mongodb</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to connect to a MongoDB cloud database using the Mongoose JavaScript driver.
 
