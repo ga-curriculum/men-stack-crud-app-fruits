@@ -30,7 +30,7 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Build and Run Serverjs",
+          "friendlyName": "Build and Run <code>server.js</code>",
           "dirName": "build-and-run-serverjs",
           "type": "Content",
           "skill": "",
@@ -199,7 +199,7 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Build and Run Serverjs",
+          "friendlyName": "Build and Run <code>server.js</code>",
           "dirName": "build-and-run-serverjs",
           "type": "Content",
           "skill": "",

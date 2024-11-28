@@ -9,8 +9,8 @@ setup = new Template.Microlesson {
   videoUrl = ""
 }
 
-buildAndRunServerjs = new Template.Microlesson {
-  friendlyName = "Build and Run Serverjs"
+buildAndRunServerJs = new Template.Microlesson {
+  friendlyName = "Build and Run <code>server.js</code>"
   dirName = "build-and-run-serverjs"
   type = "Content"
   videoUrl = ""

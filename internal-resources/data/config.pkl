@@ -22,7 +22,7 @@ courses {
     microlessons {
       // add microlessons here, in the order they should be delivered
       mls.setup
-      mls.buildAndRunServerjs
+      mls.buildAndRunServerJs
       mls.buildALandingPage
       mls.useMongooseToConnectToMongodb
       mls.buildTheFruitModel
@@ -41,7 +41,7 @@ courses {
     name = "seb"
     microlessons {
       mls.setup
-      mls.buildAndRunServerjs
+      mls.buildAndRunServerJs
       mls.buildALandingPage
       mls.useMongooseToConnectToMongodb
       mls.buildTheFruitModel
