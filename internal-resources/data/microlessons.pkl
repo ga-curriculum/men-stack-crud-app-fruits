@@ -10,7 +10,7 @@ setup = new Template.Microlesson {
 }
 
 buildAndRunServerJs = new Template.Microlesson {
-  friendlyName = "Build and Run <code>server.js</code>"
+  friendlyName = "Build and Run <code class='filepath'>server.js</code>"
   dirName = "build-and-run-serverjs"
   type = "Content"
   videoUrl = ""
@@ -24,7 +24,7 @@ buildALandingPage = new Template.Microlesson {
 }
 
 useMongooseToConnectToMongodb = new Template.Microlesson {
-  friendlyName = "Use Mongoose to Connect to Mongodb"
+  friendlyName = "Use Mongoose to Connect to MongoDB"
   dirName = "use-mongoose-to-connect-to-mongodb"
   type = "Content"
   videoUrl = ""

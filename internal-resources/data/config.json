@@ -30,7 +30,7 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Build and Run <code>server.js</code>",
+          "friendlyName": "Build and Run <code class='filepath'>server.js</code>",
           "dirName": "build-and-run-serverjs",
           "type": "Content",
           "skill": "",
@@ -50,7 +50,7 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Use Mongoose to Connect to Mongodb",
+          "friendlyName": "Use Mongoose to Connect to MongoDB",
           "dirName": "use-mongoose-to-connect-to-mongodb",
           "type": "Content",
           "skill": "",
@@ -199,7 +199,7 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Build and Run <code>server.js</code>",
+          "friendlyName": "Build and Run <code class='filepath'>server.js</code>",
           "dirName": "build-and-run-serverjs",
           "type": "Content",
           "skill": "",
@@ -219,7 +219,7 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Use Mongoose to Connect to Mongodb",
+          "friendlyName": "Use Mongoose to Connect to MongoDB",
           "dirName": "use-mongoose-to-connect-to-mongodb",
           "type": "Content",
           "skill": "",
