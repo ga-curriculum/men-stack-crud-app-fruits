@@ -15,7 +15,7 @@ Now that we've got a fully functional app, it's time to add some styling! These 
 mkdir public public/stylesheets
 ```
 
-1. In your `server.js` file, add the following middleware to serve static files from the directory:
+2. In your `server.js` file, add the following middleware to serve static files from the directory:
 
 ```javascript
 app.use(express.urlencoded({ extended: false }));
