@@ -43,7 +43,7 @@ Welcome to the "Fruits" App, a comprehensive module for intermediate learners re
 
 ### Solution code
 
-🏁 [Solution code](https://git.generalassemb.ly/modular-curriculum-all-courses/men-stack-crud-app-fruits-solution)
+🏁 [Solution code](https://github.com/ga-curriculum/men-stack-crud-app-fruits-solution)
 
 ### Course landing pages
 
